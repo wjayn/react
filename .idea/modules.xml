@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/winstar_mall_react.iml" filepath="$PROJECT_DIR$/.idea/winstar_mall_react.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/winstar_react_20181111.iml" filepath="$PROJECT_DIR$/.idea/winstar_react_20181111.iml" />
     </modules>
   </component>
 </project>
