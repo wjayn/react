@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import {Button} from 'antd'
-//import './Index.css'
+import './Lottery.css'
 
-class Index extends Component {
+class Lottery extends Component {
 
 
     constructor(props) {
@@ -29,11 +29,10 @@ class Index extends Component {
         return (
             <div>
 
-                <h1>Invited</h1>
 
             </div>
         )
     }
 }
 
-export default Index;
+export default Lottery;

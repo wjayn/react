@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-
-import { Button } from 'antd';
+import {
+    BrowserRouter as Router,
+    Route,
+} from 'react-router-dom'
 import './App.css';
+import Index from "./invited/Index";
+import InviterIndex from "./inviter/InviterIndex"
 
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <Button type="primary">Button</Button>
-            </div>
+            <Router>
+                <div>
+                    <Route path="/invited/index" component={Index}/>
+                    <Route path="/inviter/index" component={InviterIndex}/>
+                </div>
+            </Router>
         );
     }
 }
