@@ -1,7 +1,13 @@
 import React, {Component} from 'react'
-import {Button} from 'antd'
 import Lottery from './Lottery'
 import './Index.css'
+import titleText from '../assets/title_text.png'
+import viewList from '../assets/view_list.png'
+import jingli from '../assets/jingli.png'
+import Button from 'antd-mobile'
+import {
+    Link
+} from 'react-router-dom'
 
 class InviterIndex extends Component {
 
@@ -29,14 +35,21 @@ class InviterIndex extends Component {
     }
 
     render() {
+
         return (
             <div class="inviter_index_container" >
-                <h1>Inviter</h1>
+                <img class="title_text_img" src={titleText} />
+                <Lottery className='inviter_index_lottery'/>
+                <li><Link to="/prize/prizeList"><img class="view_list_img" src={viewList} /></Link></li>
+                <img class="jingli_img" src={jingli}/>
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+
             </div>
         )
     }
 
-    //<Lottery class="inviter_index_lottery"/>
 }
 
 export default InviterIndex;

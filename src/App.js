@@ -6,14 +6,17 @@ import {
 import './App.css';
 import Index from "./invited/Index";
 import InviterIndex from "./inviter/InviterIndex"
+import PrizeList from './prize/PrizeList'
+
 
 class App extends Component {
     render() {
         return (
             <Router>
-                <div>
+                <div class="App">
+                    <Route exact path="/" component={InviterIndex}/>
                     <Route path="/invited/index" component={Index}/>
-                    <Route path="/inviter/index" component={InviterIndex}/>
+                    <Route path='/prize/prizeList' component={PrizeList}/>
                 </div>
             </Router>
         );
