@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Button} from 'antd'
 import './Lottery.css'
 import doLottery from '../assets/do_lottery.png'
 

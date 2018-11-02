@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
+import {Button} from 'antd-mobile'
+import './Invite.css'
 
-
-class Index extends Component {
+class Invite extends Component {
 
 
     constructor(props) {
@@ -26,13 +27,12 @@ class Index extends Component {
 
     render() {
         return (
-            <div>
-
-
-
+            <div class="invite_container">
+                <p class="invite_tips01">邀请好友，您跟好友都可免费领取</p>
+                <p class="invite_tips02">150元优驾行大礼包</p>
             </div>
         )
     }
 }
 
-export default Index;
+export default Invite;
