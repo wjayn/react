@@ -5,6 +5,9 @@ import {
 } from 'react-router-dom'
 import './App.css';
 import Index from "./invited/Index";
+import QRCode from "./invited/QR-code";
+import End from "./invited/end";
+import MyPrize from './invited/my-prize';
 import InviterIndex from "./inviter/InviterIndex"
 
 class App extends Component {
@@ -13,6 +16,9 @@ class App extends Component {
             <Router>
                 <div>
                     <Route path="/invited/index" component={Index}/>
+                    <Route path="/invited/QRCode" component={QRCode}/>
+                    <Route path="/invited/end" component={End}/>
+                    <Route path="/invited/prize" component={MyPrize}/>
                     <Route path="/inviter/index" component={InviterIndex}/>
                 </div>
             </Router>

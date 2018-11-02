@@ -1,14 +1,46 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+/*  公共样式  */
+.container-ljj {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    max-width: 750px;
+    background-color: #fefefe;
+    overflow: auto;
+    font-family: PingFang-SC-Regular, 'Helvetica Neue', Helvetica, 'microsoft yahei', sans-serif;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.container-ljj img{
+    display: block;
+    width: 100%;
 }
