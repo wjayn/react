@@ -1,4 +1,27 @@
-.inviter_index_container{
-    display: flex;
-    flex: 1;
+.inviter_index_container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  background: url(../assets/main_bg.png);
+  background-size: 100% auto;
+}
+.inviter_index_lottery {
+  margin-top: 0.625rem;
+}
+.title_text_img {
+  width: 68%;
+  height: auto;
+  margin-top: 2.5rem;
+}
+.jingli_img {
+  width: 23.46875rem;
+  height: 6.28125rem;
+  margin-top: 1.5625rem;
+}
+.view_list_img {
+  width: 5.25rem;
+  height: 5.25rem;
+  margin-top: 1.5625rem;
 }

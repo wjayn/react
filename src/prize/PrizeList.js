@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {Button} from 'antd'
-import './Lottery.css'
-import doLottery from '../assets/do_lottery.png'
+import './PrizeList.css'
 
-class Lottery extends Component {
+class PrizeList extends Component {
+
 
     constructor(props) {
         super(props)
@@ -27,14 +27,11 @@ class Lottery extends Component {
 
     render() {
         return (
-            <div className={this.props.className} onClick={this.onLotteryClick}>
-                <img className='lottery_img' src={doLottery}/>
+            <div>
+                <h1>PrizeList</h1>
             </div>
         )
     }
-
-    onLotteryClick = ()=>{
-    }
 }
 
-export default Lottery;
+export default PrizeList;
