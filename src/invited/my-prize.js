@@ -6,7 +6,7 @@ import backB from './img/back-b.png';
 import noPic from './img/nothing.png';
 import giftData from './img/data.json';
 
-import './my-prize.scss';
+import './my-prize.less';
 
 // 空空如也
 function nothing(props) {
@@ -33,8 +33,9 @@ function nothing(props) {
 function GiftBag(props) {
     const listData = props.data;
 
-    const listItems = listData.map((item, index) =>
-        <li>
+    const listItems = listData.map((item, index) => {
+        const textContentClass = (index === 0) ? 'yellow' : 'blue';
+        return (<li>
             {(index === 0) ? (
                 <img src={backY} alt=""/>
             ) : (
@@ -45,6 +46,7 @@ function GiftBag(props) {
                 <div className='left'>
                     <p>¥<span>{item.price}</span>元</p>
                 </div>
+                <p className='border-1px-v'></p>
                 <div className='right'>
                     <p>{item.title}</p>
                     <p>有效期至{item.date}</p>
@@ -53,13 +55,13 @@ function GiftBag(props) {
             {item.remark &&
             <p>{item.remark}</p>
             }
-        </li>
-    )
+        </li>)
+    })
     return (
         <div className='list-wrap'>
             <h5 className='caption'>
                 <p>
-                    <span className='border-1px'></span>购油代金券<span className='border-1px'></span>
+                    <span className='border-1px-h'></span>购油代金券<span className='border-1px-h'></span>
                 </p>
             </h5>
             <ul>{listItems}</ul>

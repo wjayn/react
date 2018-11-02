@@ -3,7 +3,7 @@ import {Modal} from 'antd-mobile';
 import BindPhone from './bindPhone';
 
 import 'antd-mobile/dist/antd-mobile.css';
-import './index.scss';
+import './index.less';
 
 function closest(el, selector) {
     const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;

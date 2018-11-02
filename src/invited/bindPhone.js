@@ -3,7 +3,7 @@ import {Flex, InputItem, Button} from 'antd-mobile';
 
 import ad from './img/ad.png';
 import 'antd-mobile/dist/antd-mobile.css';
-import './bindPhone.scss';
+import './bindPhone.less';
 
 class BindPhone extends Component {
     constructor(props) {

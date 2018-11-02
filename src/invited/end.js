@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './end.scss';
+import './end.less';
 
 import EndPic from './img/end.png';
 

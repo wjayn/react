@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './QR-code.scss';
+import './QR-code.less';
 import Code from './img/code.png';
 
 class Index extends Component {
