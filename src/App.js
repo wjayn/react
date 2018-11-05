@@ -14,14 +14,13 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div class="App">
+                <div className="App">
                     <Route exact path="/" component={InviterIndex}/>
                     <Route path="/invited/index" component={Index}/>
                     <Route path="/invited/QRCode" component={QRCode}/>
                     <Route path="/invited/end" component={End}/>
                     <Route path="/invited/prize" component={MyPrize}/>
                     <Route path="/inviter/index" component={InviterIndex}/>
-                    <Route path='/prize/prizeList' component={PrizeList}/>
                 </div>
             </Router>
         );

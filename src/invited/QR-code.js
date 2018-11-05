@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import './QR-code.less';
-import Code from './img/code.png';
+import Code from '../assets/code.png';
 
 class Index extends Component {
     render() {

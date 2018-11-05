@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import './end.less';
 
-import EndPic from './img/end.png';
+import EndPic from '../assets/end.png';
 
 class End extends Component {
     render() {

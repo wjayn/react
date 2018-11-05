@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {Flex, InputItem, Button} from 'antd-mobile';
 
-import ad from './img/ad.png';
+import ad from '../../../assets/ad.png';
 import 'antd-mobile/dist/antd-mobile.css';
 import './bindPhone.less';
+
 
 class BindPhone extends Component {
     constructor(props) {
@@ -17,11 +18,20 @@ class BindPhone extends Component {
         }
     }
 
+    componentDidMount(){
+
+    }
+
+
     // 手机号码文本框失去焦点
     phoneBlur = (phone) => {
         if (phone.replace(/\s/g, '').length < 11) {
             this.setState({
                 hasError: true,
+            });
+        } else {
+            this.setState({
+                hasError: false,
             });
         }
     }
@@ -31,10 +41,6 @@ class BindPhone extends Component {
         this.setState({
             phone: phone
         })
-    }
-
-    clickVerify = () => {
-
     }
 
     startCountDown = () => {
@@ -87,6 +93,11 @@ class BindPhone extends Component {
                 </div>
             </div>
         )
+    }
+
+    // 获取图片验证码
+    getPicVerify = () => {
+
     }
 }
 

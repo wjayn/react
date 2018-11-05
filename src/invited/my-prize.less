@@ -1,9 +1,13 @@
 @import "../public.less";
-@import './common';
+@import 'components/common';
 
 .prize {
-  h3, h5 {
+  h3, h5, h6 {
     font-weight: normal
+  }
+  .gray-box {
+    .pxtorem(height, 16);
+    background-color: #dcdddd;
   }
   //  重置tab样式
   .am-tabs {
@@ -31,7 +35,7 @@
   .am-tabs-tab-bar-wrap {
     .pxtorem(height, 95);
   }
-  //  当前样式
+  //  大标题
   .nav-title {
     position: absolute;
     top: 0;
@@ -45,65 +49,54 @@
     background-color: #ffffff;
     border-bottom: 1px solid #dcdddd;
     box-sizing: border-box;
+    z-index: 99;
   }
-  .list-wrap {
-    .pxtorem(width, 650);
-    margin: 0 auto;
-    .caption {
+  // 小标题
+  .caption {
+    position: relative;
+    text-align: center;
+    .pxtorem(padding-top, 60);
+    p {
       position: relative;
-      text-align: center;
-      .pxtorem(padding-top, 60);
-      .pxtorem(padding-bottom, 30);
-      p {
-        position: relative;
-        display: inline-block;
-        .pxtorem(padding-left, 80);
-        .pxtorem(padding-right, 80);
-        .pxtorem(font-size, 32);
-        color: #37302f;
-        background: #ffffff;
-        .border-1px-h {
-          .border-1px(#6a6564);
-          .pxtorem(width, 65);
-          height: 1px;
-          top: 50%;
-          &:nth-of-type(2) {
-            left: auto;
-            right: 0;
-          }
+      display: inline-block;
+      .pxtorem(padding-left, 80);
+      .pxtorem(padding-right, 80);
+      .pxtorem(font-size, 32);
+      color: #37302f;
+      background: #ffffff;
+      .border-1px-h {
+        .border-1px(#6a6564);
+        .pxtorem(width, 65);
+        height: 1px;
+        top: 50%;
+        &:nth-of-type(2) {
+          left: auto;
+          right: 0;
         }
       }
     }
-    li {
-      position: relative;
-      .pxtorem(margin-bottom, 40);
-      .text-content {
-        position: absolute;
-        left: 0;
-        .pxtorem(top, 36);
-        width: 100%;
-        .pxtorem(height, 116);
-        color: #ffffff;
-        .left {
-          .pxtorem(width, 211);
-          .pxtorem(font-size, 28);
-          text-align: center;
-          span {
-            .pxtorem(font-size, 88);
-            .pxtorem(padding-left, 6);
-            .pxtorem(padding-right, 6);
-            font-weight: 800;
-          }
-        }
-        .border-1px-v {
-          .border-1px(#ffffff);
-          .pxtorem(left, 210);
-          height: 100%;
-          width: 1px;
-        }
-        .right {
-          .pxtorem(padding-left, 40);
-        }
+  }
+
+  //  空空如也
+  .nothing {
+    color: #7f7f7f;
+    .noPic {
+      .pxtorem(width, 375);
+      .pxtorem(margin-top, 105);
+      margin-right: auto;
+      .pxtorem(margin-bottom, 115);
+      margin-left: auto;
+    }
+    p:nth-of-type(1) {
+      .pxtorem(margin-bottom,30);
+      .pxtorem(font-size, 32);
+    }
+    p:nth-of-type(2) {
+      .pxtorem(font-size, 30);
+      a{
+        padding: 0 4px;
+        color: #35378f;
+        text-decoration: underline;
       }
     }
   }
