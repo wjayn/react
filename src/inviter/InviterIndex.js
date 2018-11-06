@@ -9,6 +9,8 @@ import {
     Link
 } from 'react-router-dom'
 
+import ConfiguredAxios from '../ConfiguredAxios'
+
 class InviterIndex extends Component {
 
 
@@ -20,9 +22,11 @@ class InviterIndex extends Component {
     }
 
     componentWillMount() {
+
     }
 
     componentDidMount() {
+        ConfiguredAxios.instance().doGet()
     }
 
     componentWillUnmount() {

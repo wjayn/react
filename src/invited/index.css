@@ -24,7 +24,7 @@
 }
 .index img {
   display: block;
-  width: 100%;
+  max-width: 100%;
 }
 .index-custom-wrap .am-modal-title {
   color: #c20a0a;

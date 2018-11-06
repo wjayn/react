@@ -23,8 +23,13 @@
   }
 }
 .prize h3,
-.prize h5 {
+.prize h5,
+.prize h6 {
   font-weight: normal;
+}
+.prize .gray-box {
+  height: 0.5rem;
+  background-color: #dcdddd;
 }
 .prize .am-tabs {
   padding-top: 3.125rem;
@@ -64,18 +69,14 @@
   background-color: #ffffff;
   border-bottom: 1px solid #dcdddd;
   box-sizing: border-box;
+  z-index: 99;
 }
-.prize .list-wrap {
-  width: 20.3125rem;
-  margin: 0 auto;
-}
-.prize .list-wrap .caption {
+.prize .caption {
   position: relative;
   text-align: center;
   padding-top: 1.875rem;
-  padding-bottom: 0.9375rem;
 }
-.prize .list-wrap .caption p {
+.prize .caption p {
   position: relative;
   display: inline-block;
   padding-left: 2.5rem;
@@ -84,7 +85,7 @@
   color: #37302f;
   background: #ffffff;
 }
-.prize .list-wrap .caption p .border-1px-h {
+.prize .caption p .border-1px-h {
   position: absolute;
   left: 0;
   bottom: 0px;
@@ -95,44 +96,29 @@
   height: 1px;
   top: 50%;
 }
-.prize .list-wrap .caption p .border-1px-h:nth-of-type(2) {
+.prize .caption p .border-1px-h:nth-of-type(2) {
   left: auto;
   right: 0;
 }
-.prize .list-wrap li {
-  position: relative;
-  margin-bottom: 1.25rem;
+.prize .nothing {
+  color: #7f7f7f;
 }
-.prize .list-wrap li .text-content {
-  position: absolute;
-  left: 0;
-  top: 1.125rem;
-  width: 100%;
-  height: 3.625rem;
-  color: #ffffff;
+.prize .nothing .noPic {
+  width: 11.71875rem;
+  margin-top: 3.28125rem;
+  margin-right: auto;
+  margin-bottom: 3.59375rem;
+  margin-left: auto;
 }
-.prize .list-wrap li .text-content .left {
-  width: 6.59375rem;
-  font-size: 0.875rem;
-  text-align: center;
+.prize .nothing p:nth-of-type(1) {
+  margin-bottom: 0.9375rem;
+  font-size: 1rem;
 }
-.prize .list-wrap li .text-content .left span {
-  font-size: 2.75rem;
-  padding-left: 0.1875rem;
-  padding-right: 0.1875rem;
-  font-weight: 800;
+.prize .nothing p:nth-of-type(2) {
+  font-size: 0.9375rem;
 }
-.prize .list-wrap li .text-content .border-1px-v {
-  position: absolute;
-  left: 0;
-  bottom: 0px;
-  display: block;
-  content: '';
-  background-color: #ffffff;
-  left: 6.5625rem;
-  height: 100%;
-  width: 1px;
-}
-.prize .list-wrap li .text-content .right {
-  padding-left: 1.25rem;
+.prize .nothing p:nth-of-type(2) a {
+  padding: 0 4px;
+  color: #35378f;
+  text-decoration: underline;
 }

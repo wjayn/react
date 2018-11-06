@@ -1,10 +1,43 @@
 .invite_container {
-  display: flex;
-  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  background: white;
+  background-size: 100% auto;
 }
 .invite_tips01 {
   font-size: 1.25rem;
+  margin-top: 2.65625rem;
+  color: coral;
+}
+.invite_href {
+  margin-top: 1.25rem;
 }
 .invite_tips02 {
   font-size: 1.5625rem;
+  margin-top: 0.15625rem;
+  color: coral;
+}
+.invite_tips03 {
+  font-size: 1.5625rem;
+  margin-top: 2.65625rem;
+  color: black;
+}
+.invite_bag_img {
+  width: 11.71875rem;
+  height: 6.90625rem;
+  margin-top: 2.1875rem;
+}
+.invite_button_01 {
+  background: red;
+  color: white;
+  width: 19.0625rem;
+  margin-top: 1.875rem;
+}
+.invite_button_02 {
+  color: red;
+  width: 19.0625rem;
+  margin-top: 0.625rem;
 }

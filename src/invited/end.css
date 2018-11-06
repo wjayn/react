@@ -1,7 +1,8 @@
 .end {
   text-align: center;
+  padding-top: 3.75rem;
 }
-.end img {
+.end.container-ljj > img {
   display: block;
   width: 74.1%;
   margin: 0 auto;
