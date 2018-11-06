@@ -1,20 +1,10 @@
 import React, {Component} from 'react';
-import {Modal} from 'antd-mobile';
-import BindPhone from './bindPhone';
+import {Toast, Modal} from 'antd-mobile';
+import BindPhone from './components/bindPhone/bindPhone';
+import End from './end';
 
 import 'antd-mobile/dist/antd-mobile.css';
 import './index.less';
-
-function closest(el, selector) {
-    const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
-    while (el) {
-        if (matchesSelector.call(el, selector)) {
-            return el;
-        }
-        el = el.parentElement;
-    }
-    return null;
-}
 
 // 活动结束
 class ActiveEnd extends Component {
@@ -26,7 +16,6 @@ class ActiveEnd extends Component {
     }
 
     onClose = key => () => {
-        console.log(111)
         this.setState({
             [key]: false,
         });
@@ -65,7 +54,7 @@ function ShowContent(props) {
             return <BindPhone/>;
             break;
         default:
-            return <div>nothing</div>
+            return <End></End>
     }
 }
 
@@ -73,7 +62,7 @@ class Index extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeStatus: false
+            activeStatus: 'start'
         }
     }
 
@@ -81,15 +70,7 @@ class Index extends Component {
     }
 
     componentDidMount() {
-    }
-
-    componentWillUnmount() {
-    }
-
-    componentDidShow() {
-    }
-
-    componentDidHide() {
+        // Toast.loading('请稍后...', 0);
     }
 
     render() {
