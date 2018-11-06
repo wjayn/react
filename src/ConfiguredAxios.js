@@ -13,7 +13,7 @@ class ConfiguredAxios{
     }
     defaultGetImgConfig ={
         method: 'get',
-        rresponseType: "arraybuffer"
+        responseType: "arraybuffer"
     }
     constructor() {
         this.axiosInstance = axios.create({
