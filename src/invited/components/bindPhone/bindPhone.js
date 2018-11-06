@@ -22,7 +22,7 @@ function phoneVerify(str) {
 
 // 验证用户输入的图片验证码是否规范
 function picTextVerify(text) {
-    let picTextReg = /^[0-9a-zA-Z]{4}$/;
+    let picTextReg = /^[0-9a-zA-Z]{4}/;
     if (picTextReg.test(text)) {
         return true;
     }
@@ -100,7 +100,7 @@ class BindPhone extends Component {
                                    onErrorClick={this.onErrorClick} onBlur={this.phoneBlur}
                                    phone={this.state.value} onChange={this.inputChange.bind(this, 'phone')}></InputItem>
                         <Flex className='verify-pic mb-24'>
-                            <InputItem className='input' type='digit' placeholder='请输入验证码' maxLength='6'
+                            <InputItem className='input' placeholder='请输入验证码' maxLength='4'
                                        onChange={this.inputChange.bind(this, 'imgCode')}></InputItem>
                             <img src={this.state.verifyImg} alt="验证码" onClick={this.getVerifyImg}/>
                         </Flex>
@@ -139,18 +139,27 @@ class BindPhone extends Component {
 
     // 验证图片验证码
     picTextVerifyApi = (options) => {
-        ConfiguredAxios.instance().doGet(verifyImgCodeUrl + options.imgCode).then((res) => {
+        axios.get(verifyImgCodeUrl + options.imgCode
+        ).then((res) => {
             if (res.status === 200) {
                 options.success(res.data);
             }
+        }).catch((res)=>{
+            Toast.fail('网络繁忙，请稍后再试！', 2);
         })
     }
 
     // 发送短信验证码
-    sendMessage = () => {
-        axios.post(verifyUrl, {
-            data: {}
-        }).then((res) => {
+    sendMessage = (data) => {
+        const phone = this.state.phone.replace(/\s/g, '');
+        const params = {
+            'checkId': data.checkId,
+            'phoneNumber': phone,
+            'types': 1,
+            'autograph': 1,
+            'appSecret': 1,
+        }
+        axios.post(verifyUrl, params).then((res) => {
 
         })
     }
@@ -163,9 +172,9 @@ class BindPhone extends Component {
         if (phoneVerify(phone) && picTextVerify(imgCode)) {
             this.picTextVerifyApi({
                 imgCode: imgCode,
-                success: () => {
+                success: (res) => {
                     // 2.发送短信验证码
-
+                    this.sendMessage(res);
                 }
             });
         }
