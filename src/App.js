@@ -9,7 +9,6 @@ import QRCode from "./invited/QR-code";
 import End from "./invited/end";
 import MyPrize from './invited/my-prize';
 import InviterIndex from "./inviter/InviterIndex"
-import Pa from "./prize/PrizeList"
 
 class App extends Component {
     render() {
@@ -22,7 +21,6 @@ class App extends Component {
                     <Route path="/invited/end" component={End}/>
                     <Route path="/invited/prize" component={MyPrize}/>
                     <Route path="/inviter/index" component={InviterIndex}/>
-                    <Route path="/prize/prizeList" component={Pa}/>
                 </div>
             </Router>
         );
