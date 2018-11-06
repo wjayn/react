@@ -100,7 +100,7 @@ class BindPhone extends Component {
                                    onErrorClick={this.onErrorClick} onBlur={this.phoneBlur}
                                    phone={this.state.value} onChange={this.inputChange.bind(this, 'phone')}></InputItem>
                         <Flex className='verify-pic mb-24'>
-                            <InputItem className='input' type='digit' placeholder='请输入验证码' maxLength='6'
+                            <InputItem className='input' placeholder='请输入验证码' maxLength='4'
                                        onChange={this.inputChange.bind(this, 'imgCode')}></InputItem>
                             <img src={this.state.verifyImg} alt="验证码" onClick={this.getVerifyImg}/>
                         </Flex>
@@ -119,13 +119,17 @@ class BindPhone extends Component {
     //  获取图片验证码
     getVerifyImg = () => {
         Toast.loading('请稍后...', 0);
-        configuredAxios.doGetImage(verifyImgUrl).then((res) => {
+        axios.get(verifyImgUrl, {
+            responseType: "arraybuffer"
+        }).then((res) => {
             let verifyImg = 'data:image/png;base64,' + btoa(
-                new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), '')
+                new Uint8Array(res.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
             );
-            this.setState({
-                verifyImg: verifyImg
-            })
+            if (res.status === ERR_OK) {
+                this.setState({
+                    verifyImg: verifyImg
+                })
+            }
             Toast.hide();
         }).catch(() => {
             Toast.hide();
@@ -136,9 +140,7 @@ class BindPhone extends Component {
     // 验证图片验证码
     picTextVerifyApi = (options) => {
         configuredAxios.doGet(verifyImgCodeUrl + options.imgCode).then((res) => {
-            if (res.status === 200) {
-                options.success(res.data);
-            }
+            options.success(res);
         }).catch((res)=>{
             Toast.fail('网络繁忙，请稍后再试！', 2);
         })
