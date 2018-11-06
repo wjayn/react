@@ -3,9 +3,6 @@ import axios from 'axios'
 
 class ConfiguredAxios{
 
-    axiosInstance;
-    instace;
-
     defaultPostConfig = {
         method: 'post',
         responseType: 'json',
@@ -14,12 +11,15 @@ class ConfiguredAxios{
         method: 'get',
         responseType: 'json',
     }
+    defaultGetImgConfig ={
+        method: 'get',
+        rresponseType: "arraybuffer"
+    }
     constructor() {
         this.axiosInstance = axios.create({
             baseURL: this.getBaseUrl(),
             timeout: 5000
         });
-        this.instace = null;
     }
 
     getBaseUrl(){
@@ -35,21 +35,28 @@ class ConfiguredAxios{
         );
     }
 
-    static instance(){
-        if(!this.instance) {
-            this.instance = new ConfiguredAxios();
-        }
-        return this.instance;
-    }
-
     doGet(url,params){
-        return this.axiosInstance.get(url,{...this.defaultGetConfig,param:params});
+        if (params){
+            return this.axiosInstance.get(url,{...this.defaultGetConfig,params:params}).then(this.responseProcess);
+        }else {
+            return this.axiosInstance.get(url,{...this.defaultGetConfig}).then(this.responseProcess);
+        }
+    }
+    //获取图片
+    doGetImage(url){
+        return this.axiosInstance.get(url,{...this.defaultGetImgConfig}).then(this.responseProcess);
     }
 
     doPost(url,params){
-        return this.axiosInstance.post(url,{...this.defaultPostConfig,param:params});
+        return this.axiosInstance.post(url,{...this.defaultPostConfig,params:params}).then(this.responseProcess);
     }
 
+    responseProcess = (response)=>{
+        if (response.status == 200){
+            return response.data;
+        }
+        throw new Error(response.status)
+    }
 }
 
-export default ConfiguredAxios
+export default new ConfiguredAxios()

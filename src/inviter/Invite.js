@@ -3,6 +3,7 @@ import {Button} from 'antd-mobile'
 import './Invite.css'
 import bag from '../assets/bag.png'
 
+
 class Invite extends Component {
 
 
@@ -15,6 +16,7 @@ class Invite extends Component {
     }
 
     componentDidMount() {
+
     }
 
     componentWillUnmount() {

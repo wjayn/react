@@ -26,6 +26,31 @@
   display: block;
   max-width: 100%;
 }
+.index .title {
+  padding-top: 35px;
+  padding-bottom: 28px;
+  line-height: 32px;
+  text-align: center;
+  color: #c20a0a;
+  font-size: 22px;
+}
+.index .desc {
+  width: 87%;
+  margin: 25px auto 0;
+  line-height: 32px;
+  color: #474443;
+  font-size: 14px;
+  text-indent: 24px;
+  text-align: left;
+}
+.index .desc p:nth-of-type(1) {
+  margin-bottom: 8px;
+}
+.index .ad {
+  position: relative;
+  width: 95%;
+  margin: 20px auto 0;
+}
 .index-custom-wrap .am-modal-title {
   color: #c20a0a;
 }

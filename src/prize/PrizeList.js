@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './PrizeList.css'
+import ConfiguredAxios from '../ConfiguredAxios'
 
 class PrizeList extends Component {
 
@@ -13,6 +14,7 @@ class PrizeList extends Component {
     }
 
     componentDidMount() {
+        ConfiguredAxios.doGet("",{});
     }
 
     componentWillUnmount() {
