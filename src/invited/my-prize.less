@@ -1,0 +1,110 @@
+@import "../public.less";
+@import './common';
+
+.prize {
+  h3, h5 {
+    font-weight: normal
+  }
+  //  重置tab样式
+  .am-tabs {
+    .pxtorem(padding-top, 100);
+  }
+  .am-tabs-default-bar-tab {
+    .pxtorem(height, 95);
+    .pxtorem(line-height, 95);
+    .pxtorem(font-size, 32);
+  }
+  .am-tabs-default-bar-top .am-tabs-default-bar-tab {
+    border: 0;
+  }
+  .am-tabs-default-bar-top .am-tabs-default-bar-tab::after {
+    display: none !important;
+  }
+  .am-tabs-default-bar-tab-active {
+    color: @colorRed;
+  }
+  .am-tabs-default-bar-underline {
+    width: 30% !important;
+    transform: translateX(32%);
+    border-color: @colorRed;
+  }
+  .am-tabs-tab-bar-wrap {
+    .pxtorem(height, 95);
+  }
+  //  当前样式
+  .nav-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .pxtorem(height, 100);
+    .pxtorem(line-height, 100);
+    .pxtorem(font-size, 40);
+    color: #332c2b;
+    text-align: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dcdddd;
+    box-sizing: border-box;
+  }
+  .list-wrap {
+    .pxtorem(width, 650);
+    margin: 0 auto;
+    .caption {
+      position: relative;
+      text-align: center;
+      .pxtorem(padding-top, 60);
+      .pxtorem(padding-bottom, 30);
+      p {
+        position: relative;
+        display: inline-block;
+        .pxtorem(padding-left, 80);
+        .pxtorem(padding-right, 80);
+        .pxtorem(font-size, 32);
+        color: #37302f;
+        background: #ffffff;
+        .border-1px-h {
+          .border-1px(#6a6564);
+          .pxtorem(width, 65);
+          height: 1px;
+          top: 50%;
+          &:nth-of-type(2) {
+            left: auto;
+            right: 0;
+          }
+        }
+      }
+    }
+    li {
+      position: relative;
+      .pxtorem(margin-bottom, 40);
+      .text-content {
+        position: absolute;
+        left: 0;
+        .pxtorem(top, 36);
+        width: 100%;
+        .pxtorem(height, 116);
+        color: #ffffff;
+        .left {
+          .pxtorem(width, 211);
+          .pxtorem(font-size, 28);
+          text-align: center;
+          span {
+            .pxtorem(font-size, 88);
+            .pxtorem(padding-left, 6);
+            .pxtorem(padding-right, 6);
+            font-weight: 800;
+          }
+        }
+        .border-1px-v {
+          .border-1px(#ffffff);
+          .pxtorem(left, 210);
+          height: 100%;
+          width: 1px;
+        }
+        .right {
+          .pxtorem(padding-left, 40);
+        }
+      }
+    }
+  }
+}

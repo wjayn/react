@@ -1,0 +1,28 @@
+@import "common";
+
+.index {
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.index-custom-wrap {
+  .am-modal-title {
+    color: @colorRed;
+  }
+  .text-content {
+    line-height: 28px;
+    font-size: 14px;
+    p:nth-of-type(2) {
+      margin-bottom: 15px;
+    }
+  }
+  .am-modal-button {
+    background: @colorRed;
+    color: #ffffff;
+    & * {
+      color: inherit;
+    }
+  }
+}

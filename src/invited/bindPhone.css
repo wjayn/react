@@ -1,0 +1,100 @@
+@media only screen and (-webkit-device-pixel-ratio: 1), only screen and (device-pixel-ratio: 1) {
+  .border-1px-h {
+    transform: scaleY(1);
+  }
+  .border-1px-v {
+    transform: scaleX(1);
+  }
+}
+@media only screen and (-webkit-device-pixel-ratio: 2), only screen and (device-pixel-ratio: 2) {
+  .border-1px-h {
+    transform: scaleY(0.5);
+  }
+  .border-1px-v {
+    transform: scaleX(0.5);
+  }
+}
+@media only screen and (-webkit-device-pixel-ratio: 3), only screen and (device-pixel-ratio: 3) {
+  .border-1px-h {
+    transform: scaleY(0.33);
+  }
+  .border-1px-v {
+    transform: scaleX(0.33);
+  }
+}
+.bind-phone {
+  overflow: auto;
+}
+.bind-phone .btn {
+  background-color: #c20a0a;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.bind-phone .title {
+  padding-top: 35px;
+  padding-bottom: 28px;
+  line-height: 32px;
+  text-align: center;
+  color: #c20a0a;
+  font-size: 22px;
+}
+.bind-phone .form-wrap {
+  width: 87%;
+  margin: 0 auto;
+  padding: 25px 0px;
+  border: 1px solid #c20a0a;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.bind-phone .form-wrap .box {
+  width: 74.5%;
+  margin: 0 auto;
+}
+.bind-phone .form-wrap .box .caption {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 22px;
+  color: #332c2b;
+}
+.bind-phone .form-wrap .box .input {
+  min-height: 18px;
+  height: 38px;
+  line-height: 38px;
+  margin-bottom: 14px;
+  background: transparent;
+  border-bottom-color: #e6e6e6;
+  font-size: 14px;
+  padding-left: 0;
+}
+.bind-phone .form-wrap .box .input * {
+  font-size: inherit;
+}
+.bind-phone .form-wrap .box .input input {
+  padding: 0 5px;
+}
+.bind-phone .form-wrap .box .btn {
+  margin-left: 28px;
+}
+.bind-phone .form-wrap .box > .btn {
+  margin-top: 24px;
+  margin-left: 0;
+}
+.bind-phone .form-wrap .verify .input {
+  margin-bottom: 0;
+}
+.bind-phone .desc {
+  width: 87%;
+  margin: 25px auto 0;
+  line-height: 32px;
+  color: #474443;
+  font-size: 14px;
+  text-indent: 24px;
+}
+.bind-phone .desc p:nth-of-type(1) {
+  margin-bottom: 8px;
+}
+.bind-phone .ad {
+  position: relative;
+  width: 95%;
+  margin: 20px auto 0;
+}
