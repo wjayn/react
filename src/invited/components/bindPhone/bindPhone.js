@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Toast, Flex, InputItem, Button} from 'antd-mobile';
-import ConfiguredAxios from '../../../ConfiguredAxios'
+import configuredAxios from '../../../ConfiguredAxios'
 
 import 'antd-mobile/dist/antd-mobile.css';
 import './bindPhone.less';
@@ -119,17 +119,13 @@ class BindPhone extends Component {
     //  获取图片验证码
     getVerifyImg = () => {
         Toast.loading('请稍后...', 0);
-        axios.get(verifyImgUrl, {
-            responseType: "arraybuffer"
-        }).then((res) => {
+        configuredAxios.doGetImage(verifyImgUrl).then((res) => {
             let verifyImg = 'data:image/png;base64,' + btoa(
-                new Uint8Array(res.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+                new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), '')
             );
-            if (res.status === ERR_OK) {
-                this.setState({
-                    verifyImg: verifyImg
-                })
-            }
+            this.setState({
+                verifyImg: verifyImg
+            })
             Toast.hide();
         }).catch(() => {
             Toast.hide();
@@ -139,7 +135,7 @@ class BindPhone extends Component {
 
     // 验证图片验证码
     picTextVerifyApi = (options) => {
-        ConfiguredAxios.instance().doGet(verifyImgCodeUrl + options.imgCode).then((res) => {
+        configuredAxios.doGet(verifyImgCodeUrl + options.imgCode).then((res) => {
             if (res.status === 200) {
                 options.success(res.data);
             }

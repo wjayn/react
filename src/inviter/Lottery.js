@@ -14,10 +14,6 @@ class Lottery extends Component {
     }
 
     componentDidMount() {
-
-        let gua = new Gua();
-        gua.addOnGuaCompleteListener(this.onGuaComplete)
-        gua.run();
     }
 
     componentWillUnmount() {

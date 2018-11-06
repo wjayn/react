@@ -8,8 +8,8 @@ import { Button } from 'antd-mobile';
 import {
     Link
 } from 'react-router-dom'
-
 import ConfiguredAxios from '../ConfiguredAxios'
+
 
 class InviterIndex extends Component {
 
@@ -26,7 +26,7 @@ class InviterIndex extends Component {
     }
 
     componentDidMount() {
-        ConfiguredAxios.instance().doGet()
+        ConfiguredAxios.doGet('http://www.baidu.com',{a:'1111'});
     }
 
     componentWillUnmount() {
