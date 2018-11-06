@@ -14,7 +14,7 @@ class ConfiguredAxios{
         method: 'get',
         responseType: 'json',
     }
-    constructor(name) {
+    constructor() {
         this.axiosInstance = axios.create({
             baseURL: this.getBaseUrl(),
             timeout: 5000

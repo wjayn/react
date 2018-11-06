@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Toast, Flex, InputItem, Button} from 'antd-mobile';
+import ConfiguredAxios from '../../../ConfiguredAxios'
 
 import 'antd-mobile/dist/antd-mobile.css';
 import './bindPhone.less';
@@ -138,7 +139,7 @@ class BindPhone extends Component {
 
     // 验证图片验证码
     picTextVerifyApi = (options) => {
-        axios.get(verifyImgCodeUrl + options.imgCode).then((res) => {
+        ConfiguredAxios.instance().doGet(verifyImgCodeUrl + options.imgCode).then((res) => {
             if (res.status === 200) {
                 options.success(res.data);
             }
