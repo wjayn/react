@@ -4,7 +4,7 @@ import axios from 'axios'
 class ConfiguredAxios{
 
     axiosInstance;
-    instace;
+    instace = null;
 
     defaultPostConfig = {
         method: 'post',
@@ -14,7 +14,7 @@ class ConfiguredAxios{
         method: 'get',
         responseType: 'json',
     }
-    constructor(name) {
+    constructor() {
         this.axiosInstance = axios.create({
             baseURL: this.getBaseUrl(),
             timeout: 5000
