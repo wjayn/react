@@ -1,0 +1,15 @@
+.end {
+  text-align: center;
+  padding-top: 3.75rem;
+}
+.end.container-ljj > img {
+  display: block;
+  width: 74.1%;
+  margin: 0 auto;
+  transform: translateX(-3%);
+}
+.end p {
+  margin-top: 90px;
+  color: #7e7e7e;
+  font-size: 14px;
+}

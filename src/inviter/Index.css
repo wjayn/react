@@ -8,20 +8,30 @@
   background-size: 100% auto;
 }
 .inviter_index_lottery {
-  margin-top: 0.625rem;
+  margin-top: 1.25rem;
 }
 .title_text_img {
   width: 68%;
   height: auto;
-  margin-top: 2.5rem;
+  margin-top: 1.875rem;
 }
 .jingli_img {
   width: 23.46875rem;
   height: 6.28125rem;
-  margin-top: 1.5625rem;
+  margin-top: 2.34375rem;
 }
 .view_list_img {
   width: 5.25rem;
   height: 5.25rem;
   margin-top: 1.5625rem;
+}
+.inviter_index_button {
+  height: 2.96875rem;
+  margin-top: 1.5625rem;
+  margin-right: 1.5625rem;
+  margin-left: 1.5625rem;
+  color: red;
+}
+.inviter_index_tips {
+  color: white;
 }

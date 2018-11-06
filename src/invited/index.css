@@ -1,0 +1,45 @@
+@media only screen and (-webkit-device-pixel-ratio: 1), only screen and (device-pixel-ratio: 1) {
+  .border-1px-h {
+    transform: scaleY(1);
+  }
+  .border-1px-v {
+    transform: scaleX(1);
+  }
+}
+@media only screen and (-webkit-device-pixel-ratio: 2), only screen and (device-pixel-ratio: 2) {
+  .border-1px-h {
+    transform: scaleY(0.5);
+  }
+  .border-1px-v {
+    transform: scaleX(0.5);
+  }
+}
+@media only screen and (-webkit-device-pixel-ratio: 3), only screen and (device-pixel-ratio: 3) {
+  .border-1px-h {
+    transform: scaleY(0.33);
+  }
+  .border-1px-v {
+    transform: scaleX(0.33);
+  }
+}
+.index img {
+  display: block;
+  max-width: 100%;
+}
+.index-custom-wrap .am-modal-title {
+  color: #c20a0a;
+}
+.index-custom-wrap .text-content {
+  line-height: 28px;
+  font-size: 14px;
+}
+.index-custom-wrap .text-content p:nth-of-type(2) {
+  margin-bottom: 15px;
+}
+.index-custom-wrap .am-modal-button {
+  background: #c20a0a;
+  color: #ffffff;
+}
+.index-custom-wrap .am-modal-button * {
+  color: inherit;
+}

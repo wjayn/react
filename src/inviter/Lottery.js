@@ -1,39 +1,48 @@
 import React, {Component} from 'react'
-import {Button} from 'antd'
 import './Lottery.css'
-import doLottery from '../assets/do_lottery.png'
+import Gua from '../assets/js/guajiang'
+import Le from '../assets/do_lottery.png'
 
 class Lottery extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {showClickLe:true}
     }
 
     componentWillMount() {
     }
 
     componentDidMount() {
+
+        let gua = new Gua();
+        gua.addOnGuaCompleteListener(this.onGuaComplete)
+        gua.run();
     }
 
     componentWillUnmount() {
     }
 
-    componentDidShow() {
-    }
 
-    componentDidHide() {
+    onGuaComplete = ()=>{
+
     }
 
     render() {
         return (
-            <div className={this.props.className} onClick={this.onLotteryClick}>
-                <img className='lottery_img' src={doLottery}/>
-            </div>
+
+        <div class="container">
+            <img className='le' src={Le} onClick={this.onLeClick}/>
+        </div>
+
         )
     }
 
     onLotteryClick = ()=>{
+    }
+
+    onLeClick = ()=>{
+        this.setState({showClickLe:false});
     }
 }
 
