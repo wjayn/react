@@ -1,3 +1,4 @@
+@import "../../../public.less";
 @import "../common";
 
 .bind-phone {
@@ -7,13 +8,8 @@
     color: #ffffff;
     flex-shrink: 0;
   }
-  .title {
-    padding-top: 35px;
-    padding-bottom: 28px;
-    line-height: 32px;
-    text-align: center;
-    color: @colorRed;
-    font-size: @fontBig;
+  .mb-24 {
+    .pxtorem(margin-bottom, 24);
   }
   .form-wrap {
     width: 87%;
@@ -35,7 +31,6 @@
         min-height: 18px;
         height: 38px;
         line-height: 38px;
-        margin-bottom: 14px;
         background: transparent;
         border-bottom-color: #e6e6e6;
         font-size: @fontGroovy;
@@ -49,32 +44,29 @@
       }
 
       .btn {
-        margin-left: 28px;
+        .pxtorem(margin-left, 56)
       }
 
       & > .btn {
-        margin-top: 24px;
+        .pxtorem(margin-top,48);
         margin-left: 0;
       }
     }
-    .verify .input {
-      margin-bottom: 0;
+    .verify {
+      .input {
+        margin-bottom: 0;
+      }
+      .btn {
+        .pxtorem(width, 200);
+        box-sizing: border-box;
+      }
     }
-  }
-  .desc {
-    width: 87%;
-    margin: 25px auto 0;
-    line-height: 32px;
-    color: @colorGray2;
-    font-size: @fontGroovy;
-    text-indent: 24px;
-    p:nth-of-type(1) {
-      margin-bottom: 8px;
+    .verify-pic {
+      img {
+        .pxtorem(width, 200);
+        flex-shrink: 0;
+        .pxtorem(margin-left, 56)
+      }
     }
-  }
-  .ad {
-    position: relative;
-    width: 95%;
-    margin: 20px auto 0;
   }
 }
