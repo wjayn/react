@@ -1,5 +1,6 @@
 import axios from 'axios'
 import qs from 'qs';
+import {Toast} from 'antd-mobile';
 
 class ConfiguredAxios{
 
@@ -37,7 +38,7 @@ class ConfiguredAxios{
         }else if(process.env.NODE_ENV === 'production'){
             return "https://mobile.sxwinstar.net";//线上包地址
         }else if(process.env.NODE_ENV === 'development'){
-            return "http://wechat.sxeccellentdriving.com";//开发地址
+            return "";//开发地址
         }
         throw new Error(
             '未知环境错误'
@@ -46,14 +47,14 @@ class ConfiguredAxios{
 
     doGet(url,params){
         if (params){
-            return this.axiosInstance.get(url,{...this.defaultGetConfig,params:params}).then(this.responseProcess);
+            return this.axiosInstance.get(url,{...this.defaultGetConfig,params:params}).then(this.responseProcess).catch(this.defaultErrorProcess);
         }else {
-            return this.axiosInstance.get(url,{...this.defaultGetConfig}).then(this.responseProcess);
+            return this.axiosInstance.get(url,{...this.defaultGetConfig}).then(this.responseProcess).catch(this.defaultErrorProcess);;
         }
     }
     //获取图片
     doGetImage(url){
-        return this.axiosInstance.get(url,{...this.defaultGetImgConfig}).then(this.responseProcess);
+        return this.axiosInstance.get(url,{...this.defaultGetImgConfig}).then(this.responseProcess).catch(this.defaultErrorProcess);;
     }
 
     doPost(path,params,isFromData){
@@ -63,14 +64,31 @@ class ConfiguredAxios{
         }else{
             config = {...this.defaultPostConfig,headers:{'Content-Type':'application/json'}}
         }
-        return this.axiosInstance.post(path,params,config).then(this.responseProcess);
+        return this.axiosInstance.post(path,params,config).then(this.responseProcess).catch(this.defaultErrorProcess);
     }
 
     responseProcess = (response)=>{
-        if (response.status == 200){
-            return response.data;
+        if (response.status === 200){
+            return this.processOnYjxRule(response);
+        }else {
+            throw new Error('网络错误：'+response.status)
         }
-        throw new Error(response.status)
+    }
+    processOnYjxRule(response){
+        if (response.data.code === 'success'){
+            return response.data.data;
+        }else {
+            throw new Error(response.message);
+        }
+    }
+
+    defaultErrorProcess = (error)=>{
+        let  message = error.message;
+        if(message === 'Network Error'){
+            message = '网络错误';
+        }
+        Toast.fail(message, 2);
+        throw error;
     }
 }
 

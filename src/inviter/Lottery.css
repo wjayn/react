@@ -1,17 +1,12 @@
-.container {
-  height: 5.125rem;
-  padding-top: 1.5625rem;
-}
-#canvas {
-  width: 280px;
-  height: 65px;
-  background: url('http://sandbox.runjs.cn/uploads/rs/25/8vbvprof/result.png');
-  background-size: 100% 100%;
-  margin: 0 auto;
+.lottery_container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-top: 1.875rem;
+  align-items: center;
+  justify-content: center;
 }
 .le {
   width: 20.4375rem;
   height: 5.125rem;
-  position: relative;
-  top: -66px;
 }

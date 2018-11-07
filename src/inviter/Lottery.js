@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import './Lottery.css'
 import Gua from '../assets/js/guajiang'
-import Le from '../assets/do_lottery.png'
+import LotteryImg from '../assets/do_lottery.png'
 
 class Lottery extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {showClickLe:true}
     }
 
     componentWillMount() {
@@ -19,27 +18,19 @@ class Lottery extends Component {
     componentWillUnmount() {
     }
 
-
-    onGuaComplete = ()=>{
-
-    }
-
     render() {
         return (
-
-        <div class="container">
-            <img className='le' src={Le} onClick={this.onLeClick}/>
+        <div class="lottery_container">
+            <img className='le' src={LotteryImg} onClick={this.onLotteryClick}/>
         </div>
 
         )
     }
 
     onLotteryClick = ()=>{
+        this.props.onLotteryClick();
     }
 
-    onLeClick = ()=>{
-        this.setState({showClickLe:false});
-    }
 }
 
 export default Lottery;
