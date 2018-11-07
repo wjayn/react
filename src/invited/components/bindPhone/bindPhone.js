@@ -16,7 +16,6 @@ function phoneVerify(str) {
     if (phone.length === 11 && phoneReg.test(phone)) {
         return true;
     }
-    Toast.fail('请输入正确的手机号码！', 2);
     return false;
 }
 
@@ -119,17 +118,13 @@ class BindPhone extends Component {
     //  获取图片验证码
     getVerifyImg = () => {
         Toast.loading('请稍后...', 0);
-        axios.get(verifyImgUrl, {
-            responseType: "arraybuffer"
-        }).then((res) => {
+        configuredAxios.doGetImage(verifyImgUrl).then((res) => {
             let verifyImg = 'data:image/png;base64,' + btoa(
-                new Uint8Array(res.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+                new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), '')
             );
-            if (res.status === ERR_OK) {
-                this.setState({
-                    verifyImg: verifyImg
-                })
-            }
+            this.setState({
+                verifyImg: verifyImg
+            })
             Toast.hide();
         }).catch(() => {
             Toast.hide();
@@ -141,22 +136,26 @@ class BindPhone extends Component {
     picTextVerifyApi = (options) => {
         configuredAxios.doGet(verifyImgCodeUrl + options.imgCode).then((res) => {
             options.success(res);
-        }).catch((res)=>{
-            Toast.fail('网络繁忙，请稍后再试！', 2);
+        }).catch((res) => {
+            Toast.fail('请输入正确的图片验证码！', 2);
         })
     }
 
     // 发送短信验证码
-    sendMessage = (data) => {
+    sendMessage = (params) => {
         const phone = this.state.phone.replace(/\s/g, '');
-        const params = {
-            'checkId': data.checkId,
-            'phoneNumber': phone,
-            'types': 1,
-            'autograph': 1,
-            'appSecret': 1,
+        const data = {
+            "checkId": params.checkId,
+            "phoneNumber": phone,
+            "types": "1",
+            "autograph": "1",
+            "appSecret": "1"
         }
-        axios.post(verifyUrl, params).then((res) => {
+        axios.post(verifyUrl, data, {
+            header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        }).then((res) => {
 
         })
     }
