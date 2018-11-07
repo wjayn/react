@@ -27,7 +27,7 @@ class App extends Component {
 
     ActiveStatus = () => {
         configuredAxios.doGet(activeStatusUrl).then((res) => {
-            if (res.data !== 'OK') {
+            if (res !== 'OK') {
                 this.setState({
                     status: true
                 })
