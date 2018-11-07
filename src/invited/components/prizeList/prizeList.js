@@ -12,9 +12,23 @@ function Items(props) {
     const listData = props.data;
     //  列表
     const listItems = listData.map((item, index) => {
-        const textContentClass = (index === 0) ? 'yellow' : 'blue';
+        const textContentClass = (item.rewardSerial === '30_4') ? 'yellow' : 'blue';
+        let price = 0;
+        switch (item.rewardSerial) {
+            case '30_4':
+                price = 30;
+                break;
+            case '5_29':
+                price = 5;
+                break;
+            case '3_99999_BI':
+                price = 3;
+                break;
+            default:
+                price = 2;
+        }
         return (<li key={index}>
-            {(index === 0) ? (
+            {(textContentClass === 'yellow') ? (
                 <img src={backY} alt=""/>
             ) : (
                 <img src={backB} alt=""/>
@@ -22,7 +36,7 @@ function Items(props) {
 
             <Flex className={'text-content ' + textContentClass}>
                 <div className='left'>
-                    <p>¥<span>{item.price}</span>元
+                    <p>¥<span>{price}</span>元
                         {item.num &&
                         <i className='number'>*{item.num}张</i>
                         }
@@ -30,15 +44,15 @@ function Items(props) {
                 </div>
                 <p className='border-1px-v'></p>
                 <div className='right'>
-                    <h6>{item.title}</h6>
-                    <p>有效期至{item.date}</p>
+                    <h6>{item.rewardContent}</h6>
+                    <p>有效期至{item.validityTime}</p>
                 </div>
             </Flex>
 
             <img className='tag' src={tag} alt=""/>
 
             {item.remark &&
-            <p className='remark'><span>※</span> {item.remark}</p>
+            <p className='remark'><span>※</span><i>{item.remark}</i></p>
             }
         </li>)
     })

@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {Toast, Flex, InputItem, Button} from 'antd-mobile';
-import configuredAxios from '../../../ConfiguredAxios'
+import configuredAxios from '../../../ConfiguredAxios';
 
 import 'antd-mobile/dist/antd-mobile.css';
 import './bindPhone.less';
 import {verifyImgCodeUrl, verifyUrl, verifyImgUrl} from "../../apiUrl";
 import axios from "axios/index";
-
-const ERR_OK = 200;
 
 // 验证手机号码
 function phoneVerify(str) {
