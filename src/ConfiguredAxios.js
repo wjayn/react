@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import qs from 'qs';
 
 class ConfiguredAxios{
 
@@ -18,7 +18,16 @@ class ConfiguredAxios{
     constructor() {
         this.axiosInstance = axios.create({
             baseURL: this.getBaseUrl(),
-            timeout: 5000
+            timeout: 5000,
+        });
+        this.axiosInstance.interceptors.request.use((request) => {
+            if (request.data && request.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
+                request.data = qs.stringify(request.data);
+            }
+            if(request.data && request.headers['Content-Type'] === 'application/json'){
+                request.data = JSON.stringify(request.data);
+            }
+            return request;
         });
     }
 
@@ -47,8 +56,14 @@ class ConfiguredAxios{
         return this.axiosInstance.get(url,{...this.defaultGetImgConfig}).then(this.responseProcess);
     }
 
-    doPost(url,params){
-        return this.axiosInstance.post(url,{...this.defaultPostConfig,params:params}).then(this.responseProcess);
+    doPost(path,params,isFromData){
+        let  config;
+        if (isFromData){
+            config = {...this.defaultPostConfig,headers:{'Content-Type':'application/x-www-form-urlencoded'}}
+        }else{
+            config = {...this.defaultPostConfig,headers:{'Content-Type':'application/json'}}
+        }
+        return this.axiosInstance.post(path,params,config).then(this.responseProcess);
     }
 
     responseProcess = (response)=>{
