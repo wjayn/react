@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Toast, Tabs, Badge} from 'antd-mobile';
 import configuredAxios from '../ConfiguredAxios';
 import giftTemplateData from '../assets/data2';
-import axios from 'axios';
 import {prizeListUrl} from './apiUrl';
 
 import PrizeList from './components/prizeList/prizeList';
@@ -91,8 +90,8 @@ class Index extends Component {
     }
 
     componentDidMount() {
-        // Toast.loading('请稍后...', 0);
-        // this.getListData();
+        Toast.loading('请稍后...', 0);
+        this.getListData();
     }
 
     render() {
@@ -115,9 +114,9 @@ class Index extends Component {
 
     //  获得列表数据
     getListData = () => {
-
-        axios.get(prizeListUrl + '18729904064').then(res => {
-            let data = res.data.data;
+        configuredAxios.doGet(prizeListUrl, {mobile: this.props.match.params.phone}).then(res => {
+            Toast.hide();
+            let data = res.data;
             let lotteryRewardList = data.lotteryRewardList;
             let sharingRewardList = data.sharingRewardList;
 
@@ -128,13 +127,12 @@ class Index extends Component {
             if (sharingRewardList.length > 0) {
                 list150(sharingRewardList);
             }
-            Toast.hide();
         })
 
         //  生成150元礼包列表数据 == 如果用户有150元大礼包，则使用礼包数据模版，因为代金券是固定的
         let list150 = (sharingRewardList) => {
             const validityTime = formatDate(sharingRewardList[0].updateAt);
-            giftTemplateData.map((item)=>{
+            giftTemplateData.map((item) => {
                 item.validityTime = validityTime;
             })
             this.setState({

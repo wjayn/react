@@ -37,7 +37,7 @@ class ConfiguredAxios{
         }else if(process.env.NODE_ENV === 'production'){
             return "https://mobile.sxwinstar.net";//线上包地址
         }else if(process.env.NODE_ENV === 'development'){
-            return "http://wechat.sxeccellentdriving.com";//开发地址
+            return "";//开发地址
         }
         throw new Error(
             '未知环境错误'
