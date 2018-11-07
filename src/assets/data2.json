@@ -1,25 +1,23 @@
 [
   {
-    "price": "30",
-    "title": "无门槛可立减30元",
-    "date": "2018-12-12"
+    "rewardSerial":"30_4",
+    "rewardContent": "无门槛可立减30元",
+    "remark": "需开通惠民生活卡后激活"
   },
   {
-    "price": "5",
-    "title": "购买满194立减5元",
-    "date": "2018-12-12",
+    "rewardSerial":"5_29",
+    "rewardContent": "购买满194立减5元",
     "num": "2"
   },
   {
-    "price": "3",
-    "title": "无门槛可立减3元",
-    "date": "2018-12-12",
-    "num": "6"
+    "rewardSerial":"3_99999_BI",
+    "rewardContent": "无门槛可立减3元",
+    "num": "2"
   },
   {
-    "price": "2",
-    "title": "无门槛可立减2元",
-    "date": "2018-12-12",
-    "num": "3"
+    "rewardSerial":"2",
+    "rewardContent": "无门槛可立减2元",
+    "num": "2",
+    "remark": "购油代金券将在11月12日放置于优驾行APP中"
   }
 ]

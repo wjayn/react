@@ -75,13 +75,19 @@
     }
     // 备注
     .remark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       .pxtorem(font-size, 28);
-      .pxtorem(padding-top, 20);
+      .pxtorem(padding-top, 40);
       .pxtorem(padding-bottom, 20);
       color: #332c2b;
       span {
         .pxtorem(font-size, 32);
-        vertical-align: middle;
+        .pxtorem(margin-right,4);
+      }
+      i{
+        font-style: normal;
       }
     }
   }
