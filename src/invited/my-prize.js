@@ -17,10 +17,10 @@ function Nothing(props) {
     let link = '';
     switch (type) {
         case 'giftBag':
-            link = <p>快去<a href={'/inviter/inviter/'+props.match.params.phone}>邀请好友</a>共同获得礼包吧！</p>
+            link = <p>快去<a href={"/inviter/inviter/" + props.phone}>邀请好友</a>共同获得礼包吧！</p>
             break;
         case 'prize':
-            link = <p><a href={'/inviter/index/'+props.match.params.phone}>快去抽奖吧！</a></p>
+            link = <p><a href={"/inviter/index/" + props.phone}>快去抽奖吧！</a></p>
             break;
         default:
             link = <p></p>
@@ -38,7 +38,7 @@ function Nothing(props) {
 function GiftBag(props) {
     let lifeData = [{
         rewardSerial: "99_600",
-        href: 'http://sn.189.cn/imCroePlatform/business/province99CardOrder.html?uuid=&open_id=gh_543a047d9d43&latnId=&prodType=&appId=&byqz_wx_openID=&yqz_wx_openID=&busiId=25&goodsType=02&goodsClass=25&sourseName=shengNeiCard&channel=31&ACTIVITY_ID=201808221053'
+        href: 'http://activity.tylmw.cn/DXWeb/findActivityDxActivityInfoAction.action?activity=26&dt='
     }];
     return (
         <div>
@@ -46,7 +46,7 @@ function GiftBag(props) {
                 ?
                 <PrizeList data={props.giftData}></PrizeList>
                 :
-                <Nothing type='giftBag'/>
+                <Nothing type='giftBag' phone={props.phone}/>
             }
             <PrizeAd title='电信惠民生活卡' data={lifeData}></PrizeAd>
         </div>
@@ -62,7 +62,7 @@ function PrizeDom(props) {
                 ?
                 <PrizeList data={props.prizeData}></PrizeList>
                 :
-                <Nothing type='prize'/>
+                <Nothing type='prize' phone={props.phone}/>
             }
             {(props.telecomData.length > 0) &&
             <PrizeAd title='电信购机代金券' data={props.telecomData}></PrizeAd>
@@ -104,9 +104,9 @@ class Index extends Component {
             <div className='prize container-ljj'>
                 <h3 className='nav-title'>我的奖品</h3>
                 <Tabs tabs={tabs}>
-                    <GiftBag giftData={giftData}></GiftBag>
+                    <GiftBag giftData={giftData} phone={this.props.match.params.phone}></GiftBag>
                     <PrizeDom prizeData={prizeData} airportData={airportData}
-                              telecomData={telecomData}></PrizeDom>
+                              telecomData={telecomData} phone={this.props.match.params.phone}></PrizeDom>
                 </Tabs>
             </div>
         );
