@@ -22,7 +22,7 @@ function Nothing(props) {
                 共同获得礼包吧！</p>
             break;
         case 'prize':
-            link = <p><Link to={`/inviter/index/${props.phone}`}>快去抽奖吧！</Link></p>
+            link = <p><Link to={`/inviter/index?phoneNumber=${props.phone}`}>快去抽奖吧！</Link></p>
             break;
         default:
             link = <p></p>
@@ -120,7 +120,7 @@ class Index extends Component {
             <PullToRefresh className='prize container-ljj' onRefresh={this.getListData}>
                 <h3 className='nav-title'>我的奖品</h3>
                 <Tabs tabs={tabs} className='demo'>
-                    <GiftBag giftData={giftData} phone={this.props.match.params.phone}></GiftBag>
+                    <GiftBag giftData={giftData} phone={this.props.match.params.phone }></GiftBag>
                     <PrizeDom prizeData={prizeData} airportData={airportData}
                               telecomData={telecomData} phone={this.props.match.params.phone}></PrizeDom>
                 </Tabs>
