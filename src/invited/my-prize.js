@@ -66,7 +66,7 @@ function PrizeDom(props) {
         prizeListDom = null,
         prizeAdDXDom = null,
         prizeAdJCDom = null;
-    if ((props.prizeData.length === 0) && (props.telecomData.length === 0) && (props.telecomData.length === 0)) {
+    if ((props.prizeData.length === 0) && (props.telecomData.length === 0) && (props.airportData.length === 0)) {
         nothingDom = <Nothing type='prize' phone={props.phone}/>;
     } else {
         if (props.prizeData.length > 0) {
