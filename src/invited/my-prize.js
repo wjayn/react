@@ -42,40 +42,50 @@ function GiftBag(props) {
         rewardSerial: "99_600",
         href: 'http://activity.tylmw.cn/DXWeb/findActivityDxActivityInfoAction.action?activity=26&dt='
     }];
-    let htmlDom = '';
+    let nothingDom = null,
+        prizeListDom = null,
+        prizeAdDom = null;
     if (props.giftData.length > 0) {
-        htmlDom = <PrizeList data={props.giftData}></PrizeList>
-        htmlDom += <PrizeAd title='电信惠民生活卡' data={lifeData}></PrizeAd>
+        prizeListDom = <PrizeList data={props.giftData}></PrizeList>
+        prizeAdDom = <PrizeAd title='电信惠民生活卡' data={lifeData}></PrizeAd>
     } else {
-        htmlDom = <Nothing type='giftBag' phone={props.phone}/>
+        nothingDom = <Nothing type='giftBag' phone={props.phone}/>
     }
     return (
         <div>
-            {htmlDom}
+            {prizeListDom}
+            {prizeAdDom}
+            {nothingDom}
         </div>
     )
 }
 
 // 抽奖奖品
 function PrizeDom(props) {
-    let htmlDom = '';
+    let nothingDom = null,
+        prizeListDom = null,
+        prizeAdDXDom = null,
+        prizeAdJCDom = null;
     if ((props.prizeData.length === 0) && (props.telecomData.length === 0) && (props.telecomData.length === 0)) {
-        htmlDom = <Nothing type='prize' phone={props.phone}/>;
+        nothingDom = <Nothing type='prize' phone={props.phone}/>;
     } else {
         if (props.prizeData.length > 0) {
-            htmlDom += <PrizeList data={props.prizeData}></PrizeList>;
+            prizeListDom = <PrizeList data={props.prizeData}></PrizeList>;
         }
         if (props.telecomData.length > 0) {
-            htmlDom += <PrizeAd title='电信购机代金券' data={props.telecomData}></PrizeAd>;
+            prizeAdDXDom = <PrizeAd title='电信购机代金券' data={props.telecomData}></PrizeAd>;
         }
         if (props.airportData.length > 0) {
-            htmlDom += <PrizeAd title='机场安检通道卡' data={props.airportData}></PrizeAd>;
+            prizeAdJCDom = <PrizeAd title='机场安检通道卡' data={props.airportData}></PrizeAd>;
         }
     }
 
     return (
         <div>
-            {htmlDom}
+            {nothingDom}
+            {prizeListDom}
+            {prizeAdDXDom}
+            {prizeAdJCDom}
         </div>
     )
 }
