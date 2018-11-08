@@ -42,36 +42,40 @@ function GiftBag(props) {
         rewardSerial: "99_600",
         href: 'http://activity.tylmw.cn/DXWeb/findActivityDxActivityInfoAction.action?activity=26&dt='
     }];
+    let htmlDom = '';
+    if (props.giftData.length > 0) {
+        htmlDom = <PrizeList data={props.giftData}></PrizeList>
+        htmlDom += <PrizeAd title='电信惠民生活卡' data={lifeData}></PrizeAd>
+    } else {
+        htmlDom = <Nothing type='giftBag' phone={props.phone}/>
+    }
     return (
         <div>
-            {(props.giftData.length > 0)
-                ?
-                <PrizeList data={props.giftData}></PrizeList>
-                :
-                <Nothing type='giftBag' phone={props.phone}/>
-            }
-            <PrizeAd title='电信惠民生活卡' data={lifeData}></PrizeAd>
+            {htmlDom}
         </div>
     )
 }
 
 // 抽奖奖品
 function PrizeDom(props) {
-    console.log(props.telecomData);
+    let htmlDom = '';
+    if ((props.prizeData.length === 0) && (props.telecomData.length === 0) && (props.telecomData.length === 0)) {
+        htmlDom = <Nothing type='prize' phone={props.phone}/>;
+    } else {
+        if (props.prizeData.length > 0) {
+            htmlDom += <PrizeList data={props.prizeData}></PrizeList>;
+        }
+        if (props.telecomData.length > 0) {
+            htmlDom += <PrizeAd title='电信购机代金券' data={props.telecomData}></PrizeAd>;
+        }
+        if (props.airportData.length > 0) {
+            htmlDom += <PrizeAd title='机场安检通道卡' data={props.airportData}></PrizeAd>;
+        }
+    }
+
     return (
         <div>
-            {(props.prizeData.length > 0)
-                ?
-                <PrizeList data={props.prizeData}></PrizeList>
-                :
-                <Nothing type='prize' phone={props.phone}/>
-            }
-            {(props.telecomData.length > 0) &&
-            <PrizeAd title='电信购机代金券' data={props.telecomData}></PrizeAd>
-            }
-            {(props.airportData.length > 0) &&
-            <PrizeAd title='机场安检通道卡' data={props.airportData}></PrizeAd>
-            }
+            {htmlDom}
         </div>
     )
 }
