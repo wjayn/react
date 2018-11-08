@@ -17,10 +17,10 @@ function Nothing(props) {
     let link = '';
     switch (type) {
         case 'giftBag':
-            link = <p>快去<a href="/invited/index">邀请好友</a>共同获得礼包吧！</p>
+            link = <p>快去<a href={'/inviter/inviter/'+props.match.params.phone}>邀请好友</a>共同获得礼包吧！</p>
             break;
         case 'prize':
-            link = <p><a href="/invited/index">快去抽奖吧！</a></p>
+            link = <p><a href={'/inviter/index/'+props.match.params.phone}>快去抽奖吧！</a></p>
             break;
         default:
             link = <p></p>

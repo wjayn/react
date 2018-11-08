@@ -13,7 +13,10 @@
   color: coral;
 }
 .invite_href {
+  display: flex;
+  flex-direction: row-reverse;
   margin-top: 1.25rem;
+  margin-right: 1.875rem;
 }
 .invite_tips02 {
   font-size: 1.5625rem;
@@ -21,8 +24,10 @@
   color: coral;
 }
 .invite_tips03 {
-  font-size: 1.5625rem;
-  margin-top: 2.65625rem;
+  font-size: 0.9375rem;
+  margin-top: 2.1875rem;
+  margin-right: 0.9375rem;
+  margin-left: 0.9375rem;
   color: black;
 }
 .invite_bag_img {
@@ -43,5 +48,48 @@
 }
 .Prizewinning {
   overflow: scroll;
-  height: 3.125rem;
+  height: 6.25rem;
+}
+.invite_tips_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+.invite_tips_content {
+  width: 80%;
+  height: 25rem;
+  background: url(../assets/tips.png) #ffffff no-repeat 0 bottom;
+  background-size: 100% auto;
+  margin-top: 2.8125rem;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 15px;
+  padding-top: 20px;
+}
+.invite_tips_close_container {
+  width: 100%;
+  height: auto;
+  margin-top: 0.625rem;
+}
+.invite_tips_close_img {
+  wdith: 3.75rem;
+  height: 3.75rem;
+}
+.invite_tips_rule_title {
+  color: red;
+}
+.invite_tips_rule_img {
+  wdith: 5rem;
+  height: 1.25rem;
+  margin-top: 0.3125rem;
+}
+.invite_activity_text {
+  color: #686666;
+  font-size: 0.875rem;
+  margin-top: 0.9375rem;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
 }

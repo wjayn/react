@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route,
     Redirect
 } from 'react-router-dom'
@@ -30,6 +30,12 @@ class App extends Component {
         configuredAxios.doGet(activeStatusUrl).then((res) => {
             if (res !== 'OK') {
                 this.setState({
+                    status: false
+                })
+            }
+        }).catch((error)=>{
+            if (error.message === '活动已经结束'){
+                this.setState({
                     status: true
                 })
             }
@@ -40,13 +46,12 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <Route exact path="/" component={InviterIndex}/>
                     <Route path="/invited/index/:phone" component={Index}/>
                     <Route path="/invited/QRCode" component={QRCode}/>
                     <Route path="/invited/end" component={End}/>
                     <Route path="/invited/prize/:phone" component={MyPrize}/>
                     <Route path="/inviter/index" component={InviterIndex}/>
-                    <Route path="/inviter/inviter" component={Invite}/>
+                    <Route path="/inviter/inviter/:phone" component={Invite}/>
                     {this.state.status && <Redirect to={`/invited/end`}/>}
                 </div>
             </Router>

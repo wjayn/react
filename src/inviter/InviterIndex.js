@@ -42,6 +42,7 @@ class InviterIndex extends Component {
     componentDidMount() {
         if(process.env.NODE_ENV != 'development'){
             this.phoneNumberFromApp = Tools.getUrlParam("phoneNumber");
+            window.alert("已获取到APP传来的电话号码:" + this.phoneNumberFromApp);
         }
     }
 
@@ -82,7 +83,7 @@ class InviterIndex extends Component {
                     wrapProps={{ }}
                 >
                     <div className="Prizewinning">
-                        <p>您已获得由优驾行送出的:{this.prize.rewardContent}</p>
+                        <p>您已获得:{this.prize.rewardContent},奖品将于活动结束后(11月12日)发放到您的账户中</p>
                     </div>
                 </Modal>
 
@@ -114,7 +115,7 @@ class InviterIndex extends Component {
     }
 
     onClickGiftBag = ()=>{
-        this.props.history.push('/inviter/inviter')
+        this.props.history.push('/inviter/inviter/'+this.phoneNumberFromApp)
     }
 
 }

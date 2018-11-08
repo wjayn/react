@@ -92,7 +92,7 @@ class ConfiguredAxios{
         }
         Toast.hide();
         Toast.fail(message, 2);
-        throw error;
+        throw new Error(error.message);
     }
 }
 
