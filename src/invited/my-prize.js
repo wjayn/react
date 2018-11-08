@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import {Toast, Tabs, Badge} from 'antd-mobile';
 import configuredAxios from '../ConfiguredAxios';
 import giftTemplateData from '../assets/data2';
@@ -17,10 +18,11 @@ function Nothing(props) {
     let link = '';
     switch (type) {
         case 'giftBag':
-            link = <p>快去<a href={"/inviter/inviter/" + props.phone}>邀请好友</a>共同获得礼包吧！</p>
+            link = <p>快去<Link to={`/inviter/inviter/${props.phone}`}>邀请好友</Link>
+                共同获得礼包吧！</p>
             break;
         case 'prize':
-            link = <p><a href={"/inviter/index/" + props.phone}>快去抽奖吧！</a></p>
+            link = <p><Link to={`/inviter/index/${props.phone}`}>快去抽奖吧！</Link></p>
             break;
         default:
             link = <p></p>
