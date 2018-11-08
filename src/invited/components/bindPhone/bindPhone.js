@@ -222,7 +222,7 @@ class BindPhone extends Component {
     // 查询活动是否结束；
     activeStatus = (options) => {
         configuredAxios.doGet(activeStatusUrl).then((res) => {
-            if (res.data === 'OK') {
+            if (res === 'OK') {
                 options.success();
             } else {
                 Toast.hide();
