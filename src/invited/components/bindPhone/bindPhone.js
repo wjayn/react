@@ -116,7 +116,6 @@ class BindPhone extends Component {
             Toast.hide();
         }).catch(() => {
             Toast.hide();
-            Toast.fail('网络繁忙，请稍后再试！', 2);
         })
     }
 
@@ -149,7 +148,6 @@ class BindPhone extends Component {
             })
         }).catch(() => {
             Toast.hide();
-            Toast.fail('网络繁忙，请稍后再试！', 2);
         })
     }
 
@@ -209,6 +207,8 @@ class BindPhone extends Component {
         configuredAxios.doPost(receiveInvite, data, false).then((res) => {
             Toast.hide();
             this.props.onSkipQRCode();
+        }).catch(() => {
+            Toast.hide();
         })
     }
 
