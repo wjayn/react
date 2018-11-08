@@ -116,7 +116,7 @@ class Index extends Component {
     getListData = () => {
         configuredAxios.doGet(prizeListUrl, {mobile: this.props.match.params.phone}).then(res => {
             Toast.hide();
-            let data = res.data;
+            let data = res;
             let lotteryRewardList = data.lotteryRewardList;
             let sharingRewardList = data.sharingRewardList;
 

@@ -215,7 +215,6 @@ class BindPhone extends Component {
             }
         }).catch(() => {
             Toast.hide();
-            Toast.fail('网络繁忙，请稍后再试！', 2);
         })
     }
 

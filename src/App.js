@@ -10,6 +10,7 @@ import QRCode from "./invited/QR-code";
 import End from "./invited/end";
 import MyPrize from './invited/my-prize';
 import InviterIndex from "./inviter/InviterIndex"
+import Invite from "./inviter/Invite"
 import configuredAxios from "./ConfiguredAxios";
 import {activeStatusUrl} from "./invited/apiUrl";
 
@@ -45,6 +46,7 @@ class App extends Component {
                     <Route path="/invited/end" component={End}/>
                     <Route path="/invited/prize/:phone" component={MyPrize}/>
                     <Route path="/inviter/index" component={InviterIndex}/>
+                    <Route path="/inviter/inviter" component={Invite}/>
                     {this.state.status && <Redirect to={`/invited/end`}/>}
                 </div>
             </Router>
