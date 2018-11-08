@@ -90,8 +90,8 @@ class ConfiguredAxios{
         if(message === 'Network Error'){
             message = '网络错误';
         }
+        Toast.hide();
         Toast.fail(message, 2);
-        throw error;
     }
 }
 

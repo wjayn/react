@@ -208,13 +208,7 @@ class BindPhone extends Component {
         }
         configuredAxios.doPost(receiveInvite, data, false).then((res) => {
             Toast.hide();
-            if (res.code === 'success') {
-                this.props.onSkipQRCode();
-            }else{
-                Toast.fail(res.message, 2);
-            }
-        }).catch(() => {
-            Toast.hide();
+            this.props.onSkipQRCode();
         })
     }
 
