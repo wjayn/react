@@ -205,10 +205,9 @@ class BindPhone extends Component {
             "visitType": 2
         }
         configuredAxios.doPost(receiveInvite, data, false).then((res) => {
+            debugger;
             Toast.hide();
             this.props.onSkipQRCode();
-        }).catch(() => {
-            Toast.hide();
         })
     }
 
