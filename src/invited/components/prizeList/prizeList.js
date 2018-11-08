@@ -45,7 +45,7 @@ function Items(props) {
                 <p className='border-1px-v'></p>
                 <div className='right'>
                     <h6>{item.rewardContent}</h6>
-                    <p>有效期至{item.validityTime}</p>
+                    <p>有效期至2018-12-12</p>
                 </div>
             </Flex>
 
