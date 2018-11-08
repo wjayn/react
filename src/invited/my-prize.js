@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {Toast, Tabs, Badge} from 'antd-mobile';
+import {PullToRefresh, Toast, Tabs, Badge} from 'antd-mobile';
 import configuredAxios from '../ConfiguredAxios';
 import giftTemplateData from '../assets/data2';
 import {prizeListUrl} from './apiUrl';
@@ -117,14 +117,14 @@ class Index extends Component {
         const giftData = this.state.giftBagData;
         const telecomData = this.state.telecom;
         return (
-            <div className='prize container-ljj'>
+            <PullToRefresh className='prize container-ljj' onRefresh={this.getListData}>
                 <h3 className='nav-title'>我的奖品</h3>
-                <Tabs tabs={tabs}>
+                <Tabs tabs={tabs} className='demo'>
                     <GiftBag giftData={giftData} phone={this.props.match.params.phone}></GiftBag>
                     <PrizeDom prizeData={prizeData} airportData={airportData}
                               telecomData={telecomData} phone={this.props.match.params.phone}></PrizeDom>
                 </Tabs>
-            </div>
+            </PullToRefresh>
         );
     }
 
