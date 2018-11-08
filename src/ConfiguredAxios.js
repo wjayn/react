@@ -81,7 +81,7 @@ class ConfiguredAxios{
         if (response.data.code === 'success'){
             return response.data.data;
         }else {
-            throw new Error(response.message);
+            throw new Error(response.data.message || response.message);
         }
     }
 
@@ -92,6 +92,7 @@ class ConfiguredAxios{
         }
         Toast.hide();
         Toast.fail(message, 2);
+        throw error;
     }
 }
 

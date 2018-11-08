@@ -75,7 +75,7 @@ class BindPhone extends Component {
                 <Popup modal1={this.state.activeEnd}>
                     <div className='text-content'>
                         <p>加入优驾行，我和你都将获得</p>
-                        <p>150元大礼包一份！</p>
+                        <p>200元大礼包一份！</p>
                         <p>下载优驾行APP，88折加油享不停！</p>
                     </div>
                 </Popup>
@@ -114,9 +114,7 @@ class BindPhone extends Component {
                 verifyImg: verifyImg
             })
             Toast.hide();
-        }).catch(() => {
-            Toast.hide();
-        })
+        }).catch(() => {})
     }
 
     // 验证图片验证码
@@ -146,9 +144,7 @@ class BindPhone extends Component {
                 canSubmit: true,
                 msgVerifyId: res.text
             })
-        }).catch(() => {
-            Toast.hide();
-        })
+        }).catch(() => {})
     }
 
     // 点击[获取验证码]按钮
@@ -208,8 +204,8 @@ class BindPhone extends Component {
             debugger;
             Toast.hide();
             this.props.onSkipQRCode();
-        })
-    }
+        }).catch(()=>{})}
+
 
     // 查询活动是否结束；
     activeStatus = (options) => {
@@ -222,6 +218,10 @@ class BindPhone extends Component {
                     activeEnd: true
                 })
             }
+        }).catch(()=>{
+            this.setState({
+                activeEnd: true
+            })
         })
     }
 }

@@ -34,7 +34,7 @@ function Nothing(props) {
     )
 }
 
-// 150元礼包内容
+// 200元礼包内容
 function GiftBag(props) {
     let lifeData = [{
         rewardSerial: "99_600",
@@ -79,13 +79,13 @@ class Index extends Component {
         super();
         this.state = {
             tabs: [
-                {title: <Badge>150元礼包</Badge>},
+                {title: <Badge>200元礼包</Badge>},
                 {title: <Badge>抽奖奖品</Badge>}
             ],
             airport: [], // 机场安检通道卡
             telecom: [], // 电信购机代金券
             prizeData: [], // 抽奖奖品列表
-            giftBagData: [] // 150元礼包列表
+            giftBagData: [] // 200元礼包列表
         }
     }
 
@@ -125,12 +125,12 @@ class Index extends Component {
             }
 
             if (sharingRewardList.length > 0) {
-                list150(sharingRewardList);
+                list200(sharingRewardList);
             }
         })
 
-        //  生成150元礼包列表数据 == 如果用户有150元大礼包，则使用礼包数据模版，因为代金券是固定的
-        let list150 = (sharingRewardList) => {
+        //  生成200元礼包列表数据 == 如果用户有200元大礼包，则使用礼包数据模版，因为代金券是固定的
+        let list200 = (sharingRewardList) => {
             const validityTime = formatDate(sharingRewardList[0].updateAt);
             giftTemplateData.map((item) => {
                 item.validityTime = validityTime;

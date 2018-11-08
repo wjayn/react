@@ -8,7 +8,7 @@ class Index extends Component {
         return (
             <div className='QR-code container-ljj'>
                 <div className='top shrink0'>
-                    <p className='first'>价值150元优驾行大礼包</p>
+                    <p className='first'>价值200元优驾行大礼包</p>
                     <p className='second'>已放入您的优驾行APP账户中</p>
                     <p className='third'>内含油券、免费电话卡等...</p>
                 </div>
