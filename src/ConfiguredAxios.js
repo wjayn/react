@@ -75,6 +75,9 @@ class ConfiguredAxios{
         }
     }
     processOnYjxRule(response){
+        if(!response.data.code){
+            return response.data;
+        }
         if (response.data.code === 'success'){
             return response.data.data;
         }else {
