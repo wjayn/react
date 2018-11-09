@@ -28,6 +28,9 @@
   margin-top: 2.1875rem;
   margin-right: 0.9375rem;
   margin-left: 0.9375rem;
+  line-height: 1.625rem;
+  text-indent: 1.75rem;
+  text-align: left;
   color: black;
 }
 .invite_bag_img {
@@ -92,4 +95,9 @@
   margin-top: 0.9375rem;
   margin-left: 0.625rem;
   margin-right: 0.625rem;
+  line-height: 1.125rem;
+  text-align: justify;
+}
+.invite_activity_text:nth-of-type(1) {
+  text-align: center;
 }

@@ -7,6 +7,16 @@
   background: url(../assets/main_bg.png);
   background-size: 100% auto;
 }
+.inviter_index_container .date {
+  font-size: 1.25rem;
+  margin-top: 0.9375rem;
+  margin-bottom: 0.9375rem;
+}
+.inviter_index_container .text {
+  width: 80%;
+  margin: 0 auto;
+  line-height: 1.375rem;
+}
 .inviter_index_lottery {
   margin-top: 1.25rem;
 }
@@ -18,7 +28,7 @@
 .jingli_img {
   width: 23.46875rem;
   height: 6.28125rem;
-  margin-top: 2.34375rem;
+  margin-top: 1.5625rem;
 }
 .view_list_img {
   width: 5.25rem;
