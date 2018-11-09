@@ -103,7 +103,7 @@ class InviterIndex extends Component {
         let param = {
             mobile:this.phoneNumberFromApp
         }
-        let url = '/winstar-api/api/v1/activity/noauth/doubleElvenSharing/lottery'
+        let url = '/wechat_access/api/v1/activity/noauth/doubleElvenSharing/lottery'
         configuredAxios.doPost(url,param,false).then((data)=>{
             this.setState({animating:false});
             this.showPrizewinning(data);
