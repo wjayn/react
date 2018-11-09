@@ -42,7 +42,6 @@ class InviterIndex extends Component {
     componentDidMount() {
         if(process.env.NODE_ENV != 'development'){
             this.phoneNumberFromApp = Tools.getUrlParam("phoneNumber");
-            window.alert("已获取到APP传来的电话号码:" + this.phoneNumberFromApp);
         }
     }
 
@@ -61,11 +60,11 @@ class InviterIndex extends Component {
             <div class="inviter_index_container" >
                 <img class="title_text_img" src={titleText} />
                 <Lottery className='inviter_index_lottery' onLotteryClick={this.onLotteryClick}/>
-                <li><Link to={'/invited/prize/'+this.phoneNumberFromApp}><img class="view_list_img" src={viewList} /></Link></li>
+                <img class="view_list_img" src={viewList} onClick={this.toLotteryList}/>
                 <img class="jingli_img" src={jingli}/>
                 <p class="inviter_index_tips">11月9日-11月11日每天都能抽一次奖</p>
                 <p class="inviter_index_tips">100%中奖！延长壳牌加油券 ,西安咸阳机场头等舱通道，手机代金券应有尽有 </p>
-                <Button className="inviter_index_button" onClick={this.onClickGiftBag}>领取150元礼包</Button>
+                <Button className="inviter_index_button" onClick={this.onClickGiftBag}>领取200元礼包</Button>
 
                 <ActivityIndicator
                     toast
@@ -89,6 +88,10 @@ class InviterIndex extends Component {
 
             </div>
         )
+    }
+
+    toLotteryList = ()=>{
+        this.props.history.push('/invited/prize/'+this.phoneNumberFromApp)
     }
 
     onLotteryClick = ()=>{

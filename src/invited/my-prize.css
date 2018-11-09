@@ -100,6 +100,9 @@
   left: auto;
   right: 0;
 }
+.prize .am-pull-to-refresh-content > div {
+  position: relative;
+}
 .prize .nothing {
   padding-bottom: 3.125rem;
   color: #7f7f7f;

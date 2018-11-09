@@ -57,7 +57,7 @@ class Invite extends Component {
         let baseUrl ;
 
         if (process.env.NODE_ENV === "qa"){
-            baseUrl =  "http://wechat.sxeccellentdriving.com";//测试包地址
+            baseUrl =  "http://wechat.sxeccellentdriving.com/finance/wr20181111/#";//测试包地址
         }else if(process.env.NODE_ENV === 'production'){
             baseUrl =  "https://mobile.sxwinstar.net";//线上包地址
         }else if(process.env.NODE_ENV === 'development'){
