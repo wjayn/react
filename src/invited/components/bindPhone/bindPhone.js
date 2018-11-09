@@ -54,7 +54,7 @@ class BindPhone extends Component {
                 <div className='form-wrap'>
                     <div className='box'>
                         <div className='caption'>请先绑定手机</div>
-                        <InputItem className='input mb-24' type="phone" placeholder="请输入手机号码"
+                        <InputItem className='input mb-24' type="digit" placeholder="请输入手机号码"
                                    error={this.state.hasError}
                                    onErrorClick={this.onErrorClick} onBlur={this.phoneBlur}
                                    phone={this.state.value} onChange={this.inputChange.bind(this, 'phone')}></InputItem>
