@@ -1,3 +1,7 @@
+import hmacSHA256 from 'crypto-js/hmac-sha256';
+import Base64 from 'crypto-js/enc-base64';
+
+
 class Tools{
 
     static getUrlParam(paraName) {
@@ -68,6 +72,12 @@ class Tools{
                 '注册优驾行APP，免费领取价值200元大礼包一份！油卡、电话卡应有尽有，更有100%中奖的抽奖，最高可抽全年免费加油！',
                 url)
         }
+    }
+
+
+    static testAes(){
+        let hehe = hmacSHA256('你好','123');
+        console.log(Base64.stringify(hehe))
     }
 }
 

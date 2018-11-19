@@ -43,6 +43,8 @@ class InviterIndex extends Component {
         if(process.env.NODE_ENV != 'development'){
             this.phoneNumberFromApp = Tools.getUrlParam("phoneNumber");
         }
+
+        Tools.testAes()
     }
 
     componentWillUnmount() {
