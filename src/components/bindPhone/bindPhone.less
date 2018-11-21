@@ -1,0 +1,71 @@
+@import "../../public.less";
+
+.bind-phone {
+  overflow: auto;
+  .btn {
+    background-color: @orange;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+  .mb-24 {
+    .pxtorem(margin-bottom, 24);
+  }
+  .form-wrap {
+    width: 87%;
+    margin: 0 auto;
+    padding: 25px 0px;
+    border: 1px solid @orange;
+    border-radius: 8px;
+    box-sizing: border-box;
+    .box {
+      width: 74.5%;
+      margin: 0 auto;
+      .caption {
+        margin-bottom: 30px;
+        text-align: center;
+        font-size: @fontBig;
+        color: @orange;
+      }
+      .input {
+        min-height: 18px;
+        height: 38px;
+        line-height: 38px;
+        background: transparent;
+        border-bottom-color: #e6e6e6;
+        font-size: @fontGroovy;
+        padding-left: 0;
+        & * {
+          font-size: inherit;
+        }
+        & input {
+          padding: 0 5px;
+        }
+      }
+
+      .btn {
+        .pxtorem(margin-left, 56)
+      }
+
+      & > .btn {
+        .pxtorem(margin-top,48);
+        margin-left: 0;
+      }
+    }
+    .verify {
+      .input {
+        margin-bottom: 0;
+      }
+      .btn {
+        .pxtorem(width, 200);
+        box-sizing: border-box;
+      }
+    }
+    .verify-pic {
+      img {
+        .pxtorem(width, 200);
+        flex-shrink: 0;
+        .pxtorem(margin-left, 56)
+      }
+    }
+  }
+}

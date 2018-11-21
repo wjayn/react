@@ -1,18 +1,9 @@
 import React, {Component} from 'react';
-import {
-    HashRouter as Router,
-    Route,
-    Redirect
-} from 'react-router-dom'
-import './App.css';
-import Index from "./invited/Index";
-import QRCode from "./invited/QR-code";
-import End from "./invited/end";
-import MyPrize from './invited/my-prize';
-import InviterIndex from "./inviter/InviterIndex"
-import Invite from "./inviter/Invite"
-import configuredAxios from "./ConfiguredAxios";
-import {activeStatusUrl} from "./invited/apiUrl";
+import {HashRouter as Router, Route, Redirect} from 'react-router-dom'
+
+import getToken from './getToken';
+// import fx from './fx';
+
 
 class App extends Component {
     constructor(props) {
@@ -22,36 +13,37 @@ class App extends Component {
         }
     }
 
-    componentDidMount() {
-        this.ActiveStatus();
+    initData = () => {
+        if (localStorage.getItem('token_id')) {
+            // fx.toShareBack();
+        } else {
+            this.token();
+        }
     }
+    //获取token
+    token = () => {
+        getToken.token()
+            .then((tokenData) => {
+                localStorage.setItem('token_id', tokenData.tokenId);
+                if (tokenData) {
+                    //分享
+                    // fx.toShareBack();
+                }
+            })
+    };
 
-    ActiveStatus = () => {
-        configuredAxios.doGet(activeStatusUrl).then((res) => {
-            if (res !== 'OK') {
-                this.setState({
-                    status: false
-                })
-            }
-        }).catch((error)=>{
-            if (error.message === '活动已经结束'){
-                this.setState({
-                    status: true
-                })
-            }
-        })
+    componentDidMount() {
+        this.initData();
     }
 
     render() {
         return (
             <Router>
                 <div className="App">
-                    <Route path="/invited/index/:phone" component={Index}/>
-                    <Route path="/invited/QRCode" component={QRCode}/>
-                    <Route path="/invited/end" component={End}/>
-                    <Route path="/invited/prize/:phone" component={MyPrize}/>
-                    <Route path="/inviter/index" component={InviterIndex}/>
-                    <Route path="/inviter/inviter/:phone" component={Invite}/>
+                    {/*
+                     <Route path="/" component={InviterIndex}/>
+                     <Route path="/invited/index/:phone" component={Index}/>
+                     */}
                     {this.state.status && <Redirect to={`/invited/end`}/>}
                 </div>
             </Router>

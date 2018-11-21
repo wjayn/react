@@ -1,91 +1,385 @@
-
-* {
-    margin: 0;
-    padding: 0;
+.container {
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
 }
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/*默认样式*/
+.fl {
+  float: left;
 }
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.fr {
+  float: right;
 }
-
-ul, li {
-    list-style-type: none;
+.ac {
+  text-align: center;
 }
-
-/*  公共样式  */
-.container-ljj {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 100%;
-    max-width: 750px;
-    background-color: #fefefe;
-    overflow: auto;
-    font-family: PingFang-SC-Regular, 'Helvetica Neue', Helvetica, 'microsoft yahei', sans-serif;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
+.ar {
+  text-align: right;
 }
-
-.container-ljj img {
-    display: block;
-    max-width: 100%;
+.strong {
+  font-weight: bold !important;
 }
-
-html {
-    font-size: 16px !important;
+.d-block {
+  display: block;
+  overflow: hidden;
 }
-
+.overflow-visible {
+  overflow: visible;
+}
+/*字体大小*/
+.font-size1,
+.font-size2,
+.font-size3,
+.font-size4,
+.font-size5,
+.font-size6 {
+  margin-bottom: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.font-size1 {
+  font-size: 56px;
+}
+.font-size2 {
+  font-size: 48px;
+}
+.font-size3 {
+  font-size: 40px;
+}
+.font-size4 {
+  font-weight: normal;
+  font-size: 32px;
+}
+.font-size5 {
+  font-weight: normal;
+  font-size: 28px;
+}
+.font-size6 {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 1.6;
+}
+/*间距与边距*/
+.p-0 {
+  padding: 0;
+}
+.pt-0,
+.py-0 {
+  padding-top: 0;
+}
+.pr-0,
+.px-0 {
+  padding-right: 0;
+}
+.pb-0,
+.py-0 {
+  padding-bottom: 0;
+}
+.pl-0,
+.px-0 {
+  padding-left: 0;
+}
+.p-1 {
+  padding: 10px;
+}
+.pt-1,
+.py-1 {
+  padding-top: 10px;
+}
+.pr-1,
+.px-1 {
+  padding-right: 10px;
+}
+.pb-1,
+.py-1 {
+  padding-bottom: 10px;
+}
+.pl-1,
+.px-1 {
+  padding-left: 10px;
+}
+.p-2 {
+  padding: 20px;
+}
+.pt-2,
+.py-2 {
+  padding-top: 20px;
+}
+.pr-2,
+.px-2 {
+  padding-right: 20px;
+}
+.pb-2,
+.py-2 {
+  padding-bottom: 20px;
+}
+.pl-2,
+.px-2 {
+  padding-left: 20px;
+}
+.p-3 {
+  padding: 30px;
+}
+.pt-3,
+.py-3 {
+  padding-top: 30px;
+}
+.pr-3,
+.px-3 {
+  padding-right: 30px;
+}
+.pb-3,
+.py-3 {
+  padding-bottom: 30px;
+}
+.pl-3,
+.px-3 {
+  padding-left: 30px;
+}
+.p-4 {
+  padding: 40px;
+}
+.pt-4,
+.py-4 {
+  padding-top: 40px;
+}
+.pr-4,
+.px-4 {
+  padding-right: 40px;
+}
+.pb-4,
+.py-4 {
+  padding-bottom: 40px;
+}
+.pl-4,
+.px-4 {
+  padding-left: 40px;
+}
+.p-5 {
+  padding: 50px;
+}
+.pt-5,
+.py-5 {
+  padding-top: 50px;
+}
+.pr-5,
+.px-5 {
+  padding-right: 50px;
+}
+.pb-5,
+.py-5 {
+  padding-bottom: 50px;
+}
+.pl-5,
+.px-5 {
+  padding-left: 50px;
+}
+.p-6 {
+  padding: 60px;
+}
+.pt-6,
+.py-6 {
+  padding-top: 60px;
+}
+.pr-6,
+.px-6 {
+  padding-right: 60px;
+}
+.pb-6,
+.py-6 {
+  padding-bottom: 60px;
+}
+.pl-6,
+.px-6 {
+  padding-left: 60px;
+}
+.m-0 {
+  margin: 0;
+}
+.mt-0,
+.my-0 {
+  margin-top: 0;
+}
+.mr-0,
+.mx-0 {
+  margin-right: 0;
+}
+.mb-0,
+.my-0 {
+  margin-bottom: 0;
+}
+.ml-0,
+.mx-0 {
+  margin-left: 0;
+}
+.m-1 {
+  margin: 10px;
+}
+.mt-1,
+.my-1 {
+  margin-top: 10px;
+}
+.mr-1,
+.mx-1 {
+  margin-right: 10px;
+}
+.mb-1,
+.my-1 {
+  margin-bottom: 10px;
+}
+.ml-1,
+.mx-1 {
+  margin-left: 10px;
+}
+.m-2 {
+  margin: 20px;
+}
+.mt-2,
+.my-2 {
+  margin-top: 20px;
+}
+.mr-2,
+.mx-2 {
+  margin-right: 20px;
+}
+.mb-2,
+.my-2 {
+  margin-bottom: 20px;
+}
+.ml-2,
+.mx-2 {
+  margin-left: 20px;
+}
+.m-3 {
+  margin: 30px;
+}
+.mt-3,
+.my-3 {
+  margin-top: 30px;
+}
+.mr-3,
+.mx-3 {
+  margin-right: 30px;
+}
+.mb-3,
+.my-3 {
+  margin-bottom: 30px;
+}
+.ml-3,
+.mx-3 {
+  margin-left: 30px;
+}
+.m-4 {
+  margin: 40px;
+}
+.mt-4,
+.my-4 {
+  margin-top: 40px;
+}
+.mr-4,
+.mx-4 {
+  margin-right: 40px;
+}
+.mb-4,
+.my-4 {
+  margin-bottom: 40px;
+}
+.ml-4,
+.mx-4 {
+  margin-left: 40px;
+}
+.m-5 {
+  margin: 50px;
+}
+.mt-5,
+.my-5 {
+  margin-top: 50px;
+}
+.mr-5,
+.mx-5 {
+  margin-right: 50px;
+}
+.mb-5,
+.my-5 {
+  margin-bottom: 50px;
+}
+.ml-5,
+.mx-5 {
+  margin-left: 50px;
+}
+.m-6 {
+  margin: 60px;
+}
+.mt-6,
+.my-6 {
+  margin-top: 60px;
+}
+.mr-6,
+.mx-6 {
+  margin-right: 60px;
+}
+.mb-6,
+.my-6 {
+  margin-bottom: 60px;
+}
+.ml-6,
+.mx-6 {
+  margin-left: 60px;
+}
+/*定位*/
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
+.container-750 {
+  max-width: 750px;
+  margin: 0 auto;
+}
+/*btn按钮样式*/
+.btn-yellow .at-button--primary {
+  background-color: #FDC647 !important;
+  color: #1A2074 !important;
+  border: 1PX solid #FDC647 !important;
+}
+.btn-yellow .at-button--secondary {
+  background-color: transparent;
+  color: #FDC647 !important;
+  border: 1PX solid #FDC647 !important;
+}
 @media screen and (min-width: 320px) {
-    html {
-        /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
-        font-size: calc(100% + 2 * (100vw - 375px) / 39) !important;
-        font-size: calc(16px + 2 * (100vw - 375px) / 39) !important;
-    }
+  html {
+    /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
+    font-size: calc(100% + 2 * (100vw - 375px) / 39) !important;
+    font-size: calc(16px + 2 * (100vw - 375px) / 39) !important;
+  }
 }
-
 @media screen and (min-width: 375px) {
-    html {
-        /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
-        font-size: calc(100% + 2 * (100vw - 375px) / 39) !important;
-        font-size: calc(16px + 2 * (100vw - 375px) / 39) !important;
-    }
+  html {
+    /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
+    font-size: calc(100% + 2 * (100vw - 375px) / 39) !important;
+    font-size: calc(16px + 2 * (100vw - 375px) / 39) !important;
+  }
 }
-
 @media screen and (min-width: 414px) {
-    html {
-        /* 414px-1000px每100像素宽字体增加1px(18px-22px) */
-        font-size: calc(112.5% + 4 * (100vw - 414px) / 586) !important;
-        font-size: calc(18px + 4 * (100vw - 414px) / 586) !important;
-    }
+  html {
+    /* 414px-1000px每100像素宽字体增加1px(18px-22px) */
+    font-size: calc(112.5% + 4 * (100vw - 414px) / 586) !important;
+    font-size: calc(18px + 4 * (100vw - 414px) / 586) !important;
+  }
 }
-
 @media screen and (min-width: 600px) {
-    html {
-        /* 600px-1000px每100像素宽字体增加1px(20px-24px) */
-        font-size: calc(125% + 4 * (100vw - 600px) / 400) !important;
-        font-size: calc(20px + 4 * (100vw - 600px) / 400) !important;
-    }
+  html {
+    /* 600px-1000px每100像素宽字体增加1px(20px-24px) */
+    font-size: calc(125% + 4 * (100vw - 600px) / 400) !important;
+    font-size: calc(20px + 4 * (100vw - 600px) / 400) !important;
+  }
 }
-
 @media screen and (min-width: 1000px) {
-    html {
-        /* 1000px往后是每100像素0.5px增加 */
-        font-size: calc(137.5% + 6 * (100vw - 1000px) / 1000) !important;
-        font-size: calc(22px + 6 * (100vw - 1000px) / 1000) !important;
-    }
+  html {
+    /* 1000px往后是每100像素0.5px增加 */
+    font-size: calc(137.5% + 6 * (100vw - 1000px) / 1000) !important;
+    font-size: calc(22px + 6 * (100vw - 1000px) / 1000) !important;
+  }
 }

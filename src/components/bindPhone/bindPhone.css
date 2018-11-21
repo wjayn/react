@@ -1,0 +1,63 @@
+.bind-phone {
+  overflow: auto;
+}
+.bind-phone .btn {
+  background-color: #E25B28;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+.bind-phone .mb-24 {
+  margin-bottom: 0.85714286rem;
+}
+.bind-phone .form-wrap {
+  width: 87%;
+  margin: 0 auto;
+  padding: 25px 0px;
+  border: 1px solid #E25B28;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.bind-phone .form-wrap .box {
+  width: 74.5%;
+  margin: 0 auto;
+}
+.bind-phone .form-wrap .box .caption {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 22px;
+  color: #E25B28;
+}
+.bind-phone .form-wrap .box .input {
+  min-height: 18px;
+  height: 38px;
+  line-height: 38px;
+  background: transparent;
+  border-bottom-color: #e6e6e6;
+  font-size: 14px;
+  padding-left: 0;
+}
+.bind-phone .form-wrap .box .input * {
+  font-size: inherit;
+}
+.bind-phone .form-wrap .box .input input {
+  padding: 0 5px;
+}
+.bind-phone .form-wrap .box .btn {
+  margin-left: 2rem;
+}
+.bind-phone .form-wrap .box > .btn {
+  margin-top: 1.71428571rem;
+  margin-left: 0;
+}
+.bind-phone .form-wrap .verify .input {
+  margin-bottom: 0;
+}
+.bind-phone .form-wrap .verify .btn {
+  width: 7.14285714rem;
+  box-sizing: border-box;
+}
+.bind-phone .form-wrap .verify-pic img {
+  width: 7.14285714rem;
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
