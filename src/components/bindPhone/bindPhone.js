@@ -2,11 +2,9 @@ import React, {Component} from 'react';
 import {Toast, Flex, InputItem, Button} from 'antd-mobile';
 import configuredAxios from '../../ConfiguredAxios';
 
-import Popup from '../popup/popup';
-
 import 'antd-mobile/dist/antd-mobile.css';
 import './bindPhone.less';
-import {receiveInvite, activeStatusUrl, verifyImgCodeUrl, verifyUrl, verifyImgUrl} from "../../apiUrl";
+import {receiveInvite, activeStatusUrl, verifyImgCodeUrl, verifyUrl, verifyImgUrl} from "./apiUrl";
 
 class BindPhone extends Component {
     // 手机号码文本框失去焦点
@@ -204,13 +202,6 @@ class BindPhone extends Component {
                         <Button disabled={!this.state.canSubmit} className='btn' onClick={this.formSubmit}>领取礼包</Button>
                     </div>
                 </div>
-                <Popup modal1={this.state.activeEnd}>
-                    <div className='text-content'>
-                        <p>加入优驾行，我和你都将获得</p>
-                        <p>200元大礼包一份！</p>
-                        <p>下载优驾行APP，88折加油享不停！</p>
-                    </div>
-                </Popup>
             </div>
         )
     }

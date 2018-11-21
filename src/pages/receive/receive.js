@@ -1,5 +1,9 @@
-import React, {Component} from 'react'
-import './receive.css'
+import React, {Component} from 'react';
+import BindPhone from '../../components/bindPhone/bindPhone';
+
+import top from '../../assets/image/receive-top.png';
+
+import './receive.css';
 
 class receive extends Component {
     constructor(props) {
@@ -13,9 +17,9 @@ class receive extends Component {
     render() {
         return (
             <div className='receive'>
-                <img src="" alt=""/>
+                <img src={top} alt="" className='top'/>
                 <div className='info-wrap'>
-
+                    <BindPhone></BindPhone>
                 </div>
             </div>
         )

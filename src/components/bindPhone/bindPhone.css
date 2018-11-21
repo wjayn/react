@@ -10,11 +10,7 @@
   margin-bottom: 0.85714286rem;
 }
 .bind-phone .form-wrap {
-  width: 87%;
-  margin: 0 auto;
   padding: 25px 0px;
-  border: 1px solid #E25B28;
-  border-radius: 8px;
   box-sizing: border-box;
 }
 .bind-phone .form-wrap .box {

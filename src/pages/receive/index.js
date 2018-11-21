@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Receive from './receive';
 import Already from './already';
-import no from './no';
+import No from './no';
 import './index.css'
 
 class ReceiveIndex extends Component {
@@ -17,12 +17,19 @@ class ReceiveIndex extends Component {
 
     render() {
         let htmlType = null;
-        if(this.state.status === 0){
-            htmlType = <Receive></Receive>
+        switch(this.state.status){
+            case 0:
+                htmlType = <Receive></Receive>;
+                break;
+            case 1:
+                htmlType = <Already></Already>;
+                break;
+            default:
+                htmlType = <No></No>;
         }
         return (
             <div className='container-ljj'>
-
+                {htmlType}
             </div>
         )
     }
