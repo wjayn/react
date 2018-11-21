@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 2018/9/11.
  */
+import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile';
 import configuredAxios from './ConfiguredAxios'
 import '../../assets/image/shareIcon.png'
 
@@ -15,17 +16,17 @@ const fxImgUrl = `${BASE_URL}/ccb/fission/static/images/shareIcon.png`//线上�
 const fxDesc = '送你一张最高30元加油优惠券，愿我们的友情稳步上涨！'
 const fxTimeLineTitle = '优驾行“出行无忧，邀您相伴”送加油优惠券！'
 
+
 function toShareBack() {
     //loading  show
-
-
+    Toast.loading('Loading...', 3, () => {
+        console.log('Load complete !!!');
+    });
     indexApi.validateInvite()
 
 
         .then((bindPhoneData) => {
-            //loading  hide
-
-
+            Toast.hide();
             alert(bindPhoneData.ac_state)
             if (bindPhoneData.ac_state === '0') {
                 alert('in 0')
@@ -45,7 +46,7 @@ function toShareBack() {
 
 function configShare() {
     let url = window.location.href.split('#')[0]
-    Taro.request({
+    return configuredAxios.doGet({
         'url': `${BASE_URL}${youjiaxing}${url}`,
         'method': 'POST'
     }).then((data) => {
