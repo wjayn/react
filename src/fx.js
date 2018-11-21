@@ -19,7 +19,7 @@ const fxTimeLineTitle = '优驾行“出行无忧，邀您相伴”送加油优�
 
 function toShareBack() {
     //loading  show
-    Toast.loading('Loading...', 3, () => {
+    Toast.loading('Loading...', 0, () => {
         console.log('Load complete !!!');
     });
     indexApi.validateInvite()
