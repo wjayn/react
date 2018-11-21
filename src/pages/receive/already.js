@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import './receiveAlready.css'
+import './already.css'
 
-class receiveAlready extends Component {
+class Already extends Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -13,10 +13,10 @@ class receiveAlready extends Component {
     render() {
         return (
             <div className='receiveAlready'>
-
+                已经领取
             </div>
         )
     }
 }
 
-export default receiveAlready;
+export default Already;

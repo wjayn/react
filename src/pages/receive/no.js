@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import './receiveNo.css'
+import './no.css'
 
 class receiveNo extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class receiveNo extends Component {
     render() {
         return (
             <div className='receiveNo'>
-
+领取完毕
             </div>
         )
     }

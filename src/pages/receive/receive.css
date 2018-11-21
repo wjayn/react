@@ -1,4 +1,14 @@
+.receive {
+  height: 100vh;
+  background: #E25B28;
+}
+.receive .top {
+  width: 100%;
+}
 .receive .info-wrap {
-  width: 23.82142857rem;
+  width: 90%;
+  margin: 0 auto;
   background: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
 }

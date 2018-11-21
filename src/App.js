@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {HashRouter as Router, Route, Redirect} from 'react-router-dom'
-
+import Receive from './pages/receive/index';
 import getToken from './getToken';
 // import fx from './fx';
 
@@ -17,7 +17,7 @@ class App extends Component {
         if (localStorage.getItem('token_id')) {
             // fx.toShareBack();
         } else {
-            this.token();
+            // this.token();
         }
     }
     //获取token
@@ -40,10 +40,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    {/*
-                     <Route path="/" component={InviterIndex}/>
-                     <Route path="/invited/index/:phone" component={Index}/>
-                     */}
+                    <Route path="/receive" component={Receive}/>
                     {this.state.status && <Redirect to={`/invited/end`}/>}
                 </div>
             </Router>
