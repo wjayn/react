@@ -1,14 +1,27 @@
 .receive {
   height: 100vh;
   background: #E25B28;
+  overflow: auto;
 }
 .receive .top {
   width: 100%;
 }
 .receive .info-wrap {
-  width: 90%;
-  margin: 0 auto;
+  padding-right: 1.57142857rem;
+  padding-left: 1.57142857rem;
+  padding-bottom: 1.57142857rem;
+}
+.receive .info-wrap > .box {
   background: #ffffff;
   border-radius: 4px;
   overflow: hidden;
+}
+.receive .info-wrap > .box .title {
+  color: #E25B28;
+}
+.receive .info-wrap > .box .text-box {
+  text-align: justify;
+}
+.receive .info-wrap > .box .text-box dt {
+  position: relative;
 }

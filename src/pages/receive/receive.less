@@ -3,14 +3,27 @@
 .receive {
   height: 100vh;
   background: @orange;
-  .top{
+  overflow: auto;
+  .top {
     width: 100%;
   }
   .info-wrap {
-    width: 90%;
-    margin: 0 auto;
-    background: @white;
-    border-radius: 4px;
-    overflow: hidden;
+    .pxtorem(padding-right, 44);
+    .pxtorem(padding-left, 44);
+    .pxtorem(padding-bottom, 44);
+    & > .box {
+      background: @white;
+      border-radius: 4px;
+      overflow: hidden;
+      .title {
+        color: @orange;
+      }
+      .text-box {
+        text-align: justify;
+        dt{
+          position: relative;
+        }
+      }
+    }
   }
 }

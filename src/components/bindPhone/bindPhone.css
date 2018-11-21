@@ -14,13 +14,12 @@
   box-sizing: border-box;
 }
 .bind-phone .form-wrap .box {
-  width: 74.5%;
+  width: 85%;
   margin: 0 auto;
 }
 .bind-phone .form-wrap .box .caption {
-  margin-bottom: 30px;
-  text-align: center;
-  font-size: 22px;
+  margin-bottom: 1.42857143rem;
+  font-size: 1.21428571rem;
   color: #E25B28;
 }
 .bind-phone .form-wrap .box .input {
@@ -51,9 +50,13 @@
 .bind-phone .form-wrap .verify .btn {
   width: 7.14285714rem;
   box-sizing: border-box;
+  background: #F38F17;
 }
 .bind-phone .form-wrap .verify-pic img {
   width: 7.14285714rem;
   flex-shrink: 0;
   margin-left: 2rem;
+}
+.bind-phone.border-all .form-wrap .box .input {
+  border-color: #e6e6e6;
 }

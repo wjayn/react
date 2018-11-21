@@ -14,12 +14,11 @@
     padding: 25px 0px;
     box-sizing: border-box;
     .box {
-      width: 74.5%;
+      width: 85%;
       margin: 0 auto;
       .caption {
-        margin-bottom: 30px;
-        text-align: center;
-        font-size: @fontBig;
+        .pxtorem(margin-bottom, 40);
+        .pxtorem(font-size, 34);
         color: @orange;
       }
       .input {
@@ -43,7 +42,7 @@
       }
 
       & > .btn {
-        .pxtorem(margin-top,48);
+        .pxtorem(margin-top, 48);
         margin-left: 0;
       }
     }
@@ -54,6 +53,7 @@
       .btn {
         .pxtorem(width, 200);
         box-sizing: border-box;
+        background: @orange-light;
       }
     }
     .verify-pic {
@@ -63,5 +63,9 @@
         .pxtorem(margin-left, 56)
       }
     }
+  }
+
+  &.border-all .form-wrap .box .input {
+    border-color: #e6e6e6
   }
 }

@@ -53,7 +53,8 @@ class BindPhone extends Component {
                 verifyImg: verifyImg
             })
             Toast.hide();
-        }).catch(() => {})
+        }).catch(() => {
+        })
     }
     // 验证图片验证码
     picTextVerifyApi = (options) => {
@@ -81,7 +82,8 @@ class BindPhone extends Component {
                 canSubmit: true,
                 msgVerifyId: res.text
             })
-        }).catch(() => {})
+        }).catch(() => {
+        })
     }
     // 点击[获取验证码]按钮
     getVerify = () => {
@@ -138,7 +140,9 @@ class BindPhone extends Component {
             debugger;
             Toast.hide();
             this.props.onSkipQRCode();
-        }).catch(()=>{})}
+        }).catch(() => {
+        })
+    }
     // 查询活动是否结束；
     activeStatus = (options) => {
         configuredAxios.doGet(activeStatusUrl).then((res) => {
@@ -150,7 +154,7 @@ class BindPhone extends Component {
                     activeEnd: true
                 })
             }
-        }).catch(()=>{
+        }).catch(() => {
             this.setState({
                 activeEnd: true
             })
@@ -179,17 +183,18 @@ class BindPhone extends Component {
     }
 
     render() {
+        let borderClass = this.props.borderClass || '';
         return (
-            <div className='bind-phone'>
+            <div className={`bind-phone ${borderClass}`}>
                 <div className='form-wrap'>
                     <div className='box'>
-                        <div className='caption'>请先绑定手机</div>
+                        <div className='caption'>{this.props.caption}</div>
                         <InputItem className='input mb-24' type="digit" placeholder="请输入手机号码"
                                    error={this.state.hasError}
                                    onErrorClick={this.onErrorClick} onBlur={this.phoneBlur}
                                    phone={this.state.value} onChange={this.inputChange.bind(this, 'phone')}></InputItem>
                         <Flex className='verify-pic mb-24'>
-                            <InputItem className='input' placeholder='请输入验证码' maxLength='4'
+                            <InputItem className='input' placeholder='请输入图片验证码' maxLength='4'
                                        onChange={this.inputChange.bind(this, 'imgCode')}></InputItem>
                             <img src={this.state.verifyImg} alt="验证码" onClick={this.getVerifyImg}/>
                         </Flex>
@@ -199,7 +204,7 @@ class BindPhone extends Component {
                             <Button disabled={!this.state.canClick} onClick={this.getVerify} className='btn' inline
                                     size='small'>{this.state.text}</Button>
                         </Flex>
-                        <Button disabled={!this.state.canSubmit} className='btn' onClick={this.formSubmit}>领取礼包</Button>
+                        <Button disabled={!this.state.canSubmit} className='btn' onClick={this.formSubmit}>立即领取</Button>
                     </div>
                 </div>
             </div>

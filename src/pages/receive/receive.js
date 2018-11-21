@@ -19,7 +19,17 @@ class receive extends Component {
             <div className='receive'>
                 <img src={top} alt="" className='top'/>
                 <div className='info-wrap'>
-                    <BindPhone></BindPhone>
+                    <div className='box'>
+                        <BindPhone caption='送您一张5元加油优惠券' borderClass='border-all'></BindPhone>
+                        <p className='title ac'>活动支持。。。。</p>
+                        <dl className='text-box'>
+                            <dt className='ac'><span>qqq</span></dt>
+                            <dd>qq</dd>
+                            <dd>qq</dd>
+                            <dd>qq</dd>
+                            <dd>qq</dd>
+                        </dl>
+                    </div>
                 </div>
             </div>
         )
