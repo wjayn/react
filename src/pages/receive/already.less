@@ -1,3 +1,48 @@
-.already {
+@import "../../public";
 
+.already {
+  img {
+    width: 100%;
+    display: block;
+  }
+  .top {
+    position: relative;
+    .pxtorem(margin-bottom, 261);
+    .use {
+      position: absolute;
+      left: 34%;
+      width: 32.26%;
+      bottom: -47%;
+    }
+  }
+  .QR-code {
+    width: 33.34%;
+    margin: 0 auto;
+  }
+  .arrow {
+    display: inline-block;
+    .pxtorem(margin-top, 21);
+    .pxtorem(margin-bottom, 21);
+    .pxtorem(border-left-width, 10);
+    .pxtorem(border-bottom-width, 16);
+    .pxtorem(border-right-width, 10);
+    border-style: solid;
+    border-bottom-color: #666666;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top: 0;
+  }
+  .text {
+    text-align: center;
+    p:nth-of-type(1) {
+      .pxtorem(margin-bottom, 16);
+      .pxtorem(font-size, 30);
+      font-weight: 800;
+      color: #666666;
+    }
+    p:nth-of-type(2) {
+      .pxtorem(font-size, 26);
+      color: #6f6f6f;
+    }
+  }
 }

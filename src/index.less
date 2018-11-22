@@ -1,9 +1,34 @@
 @import './public.less';
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: @white !important;
+}
+
 .container {
   width: 100%;
   height: 100%;
   background: transparent !important;
+}
+
+.flex{
+  display: flex;
+}
+
+.flex.hb{
+  justify-content: space-between;
+}
+
+.flex.ha{
+  justify-content: space-between;
+}
+
+.flex.hc{
+  justify-content: center;
 }
 
 /*默认样式*/

@@ -1,4 +1,4 @@
-@import "../../public.less";
+@import "../../public";
 
 .bind-phone {
   overflow: auto;
@@ -11,7 +11,8 @@
     .pxtorem(margin-bottom, 24);
   }
   .form-wrap {
-    padding: 25px 0px;
+    .pxtorem(padding-top, 54);
+    .pxtorem(padding-bottom, 46);
     box-sizing: border-box;
     .box {
       width: 85%;
@@ -38,7 +39,7 @@
       }
 
       .btn {
-        .pxtorem(margin-left, 56)
+        .pxtorem(margin-left, 36)
       }
 
       & > .btn {
@@ -60,12 +61,23 @@
       img {
         .pxtorem(width, 200);
         flex-shrink: 0;
-        .pxtorem(margin-left, 56)
+        .pxtorem(margin-left, 36)
       }
     }
   }
 
-  &.border-all .form-wrap .box .input {
-    border-color: #e6e6e6
+  &.border-all .form-wrap .box {
+    .am-list-line {
+      padding-right: 0;
+      &::after {
+        display: none;
+      }
+    }
+    .input {
+      padding: 0 5px;
+      border-style: solid;
+      border-color: #e6e6e6;
+      .pxtorem(border-width, 1);
+    }
   }
 }

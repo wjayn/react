@@ -28,7 +28,7 @@ class ReceiveIndex extends Component {
                 htmlType = <No></No>;
         }
         return (
-            <div className='container-ljj'>
+            <div className=''>
                 {htmlType}
             </div>
         )

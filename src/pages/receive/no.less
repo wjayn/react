@@ -1,3 +1,29 @@
-.no {
+@import "../../public";
 
+.no {
+  position: relative;
+  height: 100vh;
+  box-sizing: border-box;
+  .pxtorem(padding-bottom, 200);
+  img {
+    display: block;
+    width: 100%;
+  }
+  .top {
+    .pxtorem(padding-top, 133);
+    .pxtorem(padding-bottom, 145);
+  }
+  .text {
+    .pxtorem(font-size, 37);
+    color: #fe8857;
+  }
+  .bot {
+    position: absolute;
+    width: 100%;
+    .pxtorem(bottom, 95);
+    img {
+      .pxtorem(width, 122);
+      display: inline-block;
+    }
+  }
 }

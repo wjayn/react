@@ -10,7 +10,8 @@
   margin-bottom: 0.85714286rem;
 }
 .bind-phone .form-wrap {
-  padding: 25px 0px;
+  padding-top: 1.92857143rem;
+  padding-bottom: 1.64285714rem;
   box-sizing: border-box;
 }
 .bind-phone .form-wrap .box {
@@ -38,7 +39,7 @@
   padding: 0 5px;
 }
 .bind-phone .form-wrap .box .btn {
-  margin-left: 2rem;
+  margin-left: 1.28571429rem;
 }
 .bind-phone .form-wrap .box > .btn {
   margin-top: 1.71428571rem;
@@ -55,8 +56,17 @@
 .bind-phone .form-wrap .verify-pic img {
   width: 7.14285714rem;
   flex-shrink: 0;
-  margin-left: 2rem;
+  margin-left: 1.28571429rem;
+}
+.bind-phone.border-all .form-wrap .box .am-list-line {
+  padding-right: 0;
+}
+.bind-phone.border-all .form-wrap .box .am-list-line::after {
+  display: none;
 }
 .bind-phone.border-all .form-wrap .box .input {
+  padding: 0 5px;
+  border-style: solid;
   border-color: #e6e6e6;
+  border-width: 0.03571429rem;
 }

@@ -6,9 +6,9 @@ import configuredAxios from './ConfiguredAxios'
 //获取Token
 function token() {
     if (!localStorage.getItem('openid')) {
-        const openid = '123123213';
+        // const openid = '123123213';
         // 线下
-        // window.location.href = `http://wechat.sxeccellentdriving.com?type=callback&menu=123`;
+        window.location.href = `http://wechat.sxeccellentdriving.com?type=callback&menu=weekendBrand`;
         // 线上
         // window.location.href = `https://mobile.sxwinstar.net?type=callback&menu=123`;
         return
@@ -25,22 +25,14 @@ function token() {
         'headImgUrl': localStorage.getItem('headimgurl'),
         'nickName': localStorage.getItem('nickname')
     };
-   return configuredAxios.doGet({
-            url: '/ccb-api/api/v1/cbc/account/getToken',
-            data: JSON.stringify(jsonData),
-            header: {
-                'content-type': 'application/json'
-            },
-            method: 'POST'
-        })
-        .then((res) => {
-            console.log(res.data);
-            if (res.statusCode === 200) {
-                return res.data;
-            } else {
-                alert(res)
-            }
-        }).catch((error) => {
+    return configuredAxios.doPost('/ccb-api/api/v1/cbc/account/getToken', JSON.stringify(jsonData)).then((res) => {
+        console.log(res.data);
+        if (res.statusCode === 200) {
+            return res.data;
+        } else {
+            alert(res)
+        }
+    }).catch((error) => {
         console.log(error)
     })
 }

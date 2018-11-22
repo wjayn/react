@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {HashRouter as Router, Route, Redirect} from 'react-router-dom'
 import Receive from './pages/receive/index';
 import getToken from './getToken';
+
 // import fx from './fx';
 
 
@@ -22,14 +23,15 @@ class App extends Component {
     }
     //获取token
     token = () => {
-        getToken.token()
-            .then((tokenData) => {
-                localStorage.setItem('token_id', tokenData.tokenId);
-                if (tokenData) {
-                    //分享
-                    // fx.toShareBack();
-                }
-            })
+            getToken.token()
+                .then((tokenData) => {
+                    localStorage.setItem('token_id', tokenData.tokenId);
+                    if (tokenData) {
+                        //分享
+                        // fx.toShareBack();
+                    }
+                })
+
     };
 
     componentDidMount() {

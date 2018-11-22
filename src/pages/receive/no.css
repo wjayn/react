@@ -1,0 +1,27 @@
+.no {
+  position: relative;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-bottom: 7.14285714rem;
+}
+.no img {
+  display: block;
+  width: 100%;
+}
+.no .top {
+  padding-top: 4.75rem;
+  padding-bottom: 5.17857143rem;
+}
+.no .text {
+  font-size: 1.32142857rem;
+  color: #fe8857;
+}
+.no .bot {
+  position: absolute;
+  width: 100%;
+  bottom: 3.39285714rem;
+}
+.no .bot img {
+  width: 4.35714286rem;
+  display: inline-block;
+}

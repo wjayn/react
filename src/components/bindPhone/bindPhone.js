@@ -106,59 +106,30 @@ class BindPhone extends Component {
     }
     // 领取礼包
     formSubmit = () => {
-        const phone = this.state.phone;
-        if (!phoneVerify(phone)) Toast.fail('请输入正确的手机号码！', 2);
-
-        const imgCode = this.state.imgCode;
-        const msgCode = this.state.msgCode;
-
-        if (phoneVerify(phone) && picTextVerify(imgCode) && msgVierfy(msgCode)) {
-            // 1、查询活动是否结束；
-            Toast.loading("请稍后...", 0);
-            this.activeStatus({
-                success: () => {
-                    // 2、接受邀请
-                    this.receiveInvite();
-                }
-            });
+        let params = {
+            mobile: this.state.phone,
+            msgVerifyCode: this.state.msgCode,
+            msgVerifyId: this.state.msgVerifyId
         }
+        this.props.onBtnClick({a: 1, b: 2});
+        // const phone = this.state.phone;
+        // if (!phoneVerify(phone)) Toast.fail('请输入正确的手机号码！', 2);
+        //
+        // const imgCode = this.state.imgCode;
+        // const msgCode = this.state.msgCode;
+        //
+        // if (phoneVerify(phone) && picTextVerify(imgCode) && msgVierfy(msgCode)) {
+        //     // 1、查询活动是否结束；
+        //     Toast.loading("请稍后...", 0);
+        //     this.props.onBtnClick({a:1,b:2});
+        //     // this.activeStatus({
+        //     //     success: () => {
+        //     //         // 2、接受邀请
+        //     //         this.receiveInvite();
+        //     //     }
+        //     // });
+        // }
         return false;
-    }
-    // 接受邀请
-    receiveInvite = () => {
-        let phone = this.state.phone.replace(/\s/g, '');
-        let data = {
-            "inviteAccount": this.props.inviteAccount,
-            "account": phone,
-            "alias": "2",
-            "msgVerifyCode": this.state.msgCode,
-            "msgVerifyId": this.state.msgVerifyId,
-            "password": "",
-            "visitType": 2
-        }
-        configuredAxios.doPost(receiveInvite, data, false).then((res) => {
-            debugger;
-            Toast.hide();
-            this.props.onSkipQRCode();
-        }).catch(() => {
-        })
-    }
-    // 查询活动是否结束；
-    activeStatus = (options) => {
-        configuredAxios.doGet(activeStatusUrl).then((res) => {
-            if (res === 'OK') {
-                options.success();
-            } else {
-                Toast.hide();
-                this.setState({
-                    activeEnd: true
-                })
-            }
-        }).catch(() => {
-            this.setState({
-                activeEnd: true
-            })
-        })
     }
 
     constructor(props) {
@@ -204,7 +175,8 @@ class BindPhone extends Component {
                             <Button disabled={!this.state.canClick} onClick={this.getVerify} className='btn' inline
                                     size='small'>{this.state.text}</Button>
                         </Flex>
-                        <Button disabled={!this.state.canSubmit} className='btn' onClick={this.formSubmit}>立即领取</Button>
+                        {/*<Button disabled={!this.state.canSubmit} className='btn' onClick={this.formSubmit}>立即领取</Button>*/}
+                        <Button disabled={false} className='btn' onClick={this.formSubmit}>立即领取</Button>
                     </div>
                 </div>
             </div>
