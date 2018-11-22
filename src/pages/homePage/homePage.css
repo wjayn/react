@@ -1,0 +1,76 @@
+.homePage-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #E25B28;
+}
+.homePage-topImage {
+  width: 100%;
+  height: auto;
+}
+.activityBgDiv {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+}
+.homePage-openDay {
+  font-size: 1.28571429rem;
+  color: #FFE97D;
+}
+.homePage-activityBtn {
+  background-color: white;
+  font-size: 1.42857143rem;
+  height: 2.85714286rem;
+  line-height: 2.85714286rem;
+  border-radius: 0.17857143rem;
+  width: 70%;
+  text-align: center;
+}
+.openBtn {
+  color: #E25B28;
+}
+.notOpenBtn {
+  margin-top: 1.42857143rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+.homePage-padding {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.homePage-line {
+  background-color: #F38F17;
+  height: 0.03571429rem;
+  margin-top: 2.14285714rem;
+}
+.introduceTitle {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.42857143rem;
+  align-items: center;
+}
+.introduceText {
+  font-size: 0.92857143rem;
+  color: white;
+  font-weight: bold;
+}
+.introduce-line {
+  background-color: white;
+  height: 0.07142857rem;
+  width: 2.14285714rem;
+}
+.leftLine {
+  margin-right: 0.35714286rem;
+}
+.rightLine {
+  margin-left: 0.35714286rem;
+}
+.introduce-contenDiv {
+  margin-top: 0rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
