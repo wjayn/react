@@ -1,0 +1,88 @@
+.oilCard-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+.oilCard-banner {
+  width: 100%;
+  height: auto;
+}
+.observeCouponDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.42857143rem;
+  padding-bottom: 1.42857143rem;
+}
+.oilCouponBtn {
+  width: 50%;
+  height: auto;
+}
+.chooseCouponTitle {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.07142857rem;
+}
+.selectedItem {
+  color: deepskyblue;
+  border-color: deepskyblue;
+}
+.normalItem {
+  color: gray;
+  border-color: gray;
+}
+.oilCard-oilItem {
+  border-radius: 0.35714286rem;
+  border-width: 0.07142857rem;
+  margin-left: 0.35714286rem;
+  margin-right: 0.35714286rem;
+  height: 1.78571429rem;
+  height: 3.57142857rem;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.oilCard-originalPrice {
+  font-size: 1.42857143rem;
+  font-weight: bold;
+}
+.oicCard-salePrice {
+  font-size: 0.57142857rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.discountImage {
+  width: 0.71428571rem;
+  display: flex;
+  margin-top: 0;
+  margin-right: 0;
+}
+.oilCard-line {
+  height: 0.07142857rem;
+  background-color: lightgray;
+}
+.oilCard-introduction {
+  color: rgba(0, 0, 0, 0.5);
+}
+.introduction-title {
+  font-weight: bold;
+  font-size: 1.07142857rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.oicCard-buyBtn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+.oilCard-padding {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}

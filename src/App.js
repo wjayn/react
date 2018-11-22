@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {HashRouter as Router, Route, Redirect} from 'react-router-dom'
 import Receive from './pages/receive/index';
+import HomePage from './pages/homePage/homePage'
+import OilCard from './pages/oilCard/oilCard'
 import getToken from './getToken';
 
 // import fx from './fx';
@@ -43,6 +45,8 @@ class App extends Component {
             <Router>
                 <div className="App">
                     <Route path="/receive" component={Receive}/>
+                    <Route path="/homePage" component={HomePage}/>
+                    <Route path="/oilCard" component={OilCard}/>
                     {this.state.status && <Redirect to={`/invited/end`}/>}
                 </div>
             </Router>
