@@ -1,0 +1,103 @@
+@import "../../public";
+
+.oilCard-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+.oilCard-banner {
+  width: 100%;
+  height: auto;
+}
+.observeCouponDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .pxtorem(padding-top, 40);
+  .pxtorem(padding-bottom, 40);
+}
+.oilCouponBtn {
+  width: 50%;
+  height: auto;
+}
+.chooseCouponTitle {
+  color: @black5;
+  .pxtorem(font-size, 30);
+}
+.oicCardItemDiv {
+
+}
+
+.selectedItem {
+  color: deepskyblue;
+  border-color: deepskyblue;
+}
+
+.normalItem {
+  color: gray;
+  border-color: gray;
+}
+
+.oilCard-oilItem {
+  .pxtorem(border-radius,10);
+  .pxtorem(border-width,2);
+  .pxtorem(margin-left, 10);
+  .pxtorem(margin-right, 10);
+  .pxtorem(height, 50);
+  .pxtorem(height, 100);
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.oilCard-originalPrice {
+  .pxtorem(font-size, 40);
+  font-weight: bold;
+}
+
+.oicCard-salePrice {
+  .pxtorem(font-size, 16);
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.discountImage {
+  .pxtorem(width, 20);
+  display: flex;
+  margin-top: 0;
+  margin-right: 0;
+}
+
+.oilCard-line {
+  .pxtorem(height, 2);
+  background-color: lightgray;
+}
+
+.oilCard-introduction {
+  color: @black5;
+}
+
+.introduction-title {
+  font-weight: bold;
+  .pxtorem(font-size, 30);
+  color: @black7;
+}
+
+.oicCard-buyBtn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+.oilCard-padding {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
