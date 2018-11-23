@@ -7,10 +7,8 @@ import Already from './pages/receive/already';
 import No from './pages/receive/no';
 import getToken from './getToken';
 
-// import fx from './fx';
-
-
 class App extends Component {
+
     constructor(props) {
         super(props);
     }

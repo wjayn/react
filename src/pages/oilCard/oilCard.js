@@ -26,8 +26,11 @@ class oilCard extends Component {
         })
     }
     skipBuy = () => {
-        window.location.href = 'http://wechat.sxeccellentdriving.com/lyy/#/activity/payment?brandTokenId=' + localStorage.getItem("tokenId");
+        let href = "https://mobile.sxwinstar.net/ccb/web/#/activity/payment?salePrice=0.01&shopPrice=100&activityId=203&id=123&backActivityTwo=one";
+
         let cur = this.state.listData[this.state.selectedIndex];
+        // window.location.href = 'http://wechat.sxeccellentdriving.com/lyy/#/activity/payment?brandTokenId=' + localStorage.getItem("tokenId");
+
         console.log(cur);
     }
     observeCouponClick = () => {
@@ -75,58 +78,62 @@ class oilCard extends Component {
 
         return (
             <div className='oilCard-root'>
-                <a href=""><img className='oilCard-banner' src={oilCardBanner} alt=""/></a>
-                <div className='observeCouponDiv'>
-                    <img className='oilCouponBtn' src={oilCardBtn} alt="" onClick={this.observeCouponClick}/>
-                </div>
-                <div className='chooseCouponTitle oilCard-padding'>
-                    请选择油券
-                </div>
-                <div className='oilCard-padding oicCardItemDiv'>
-                    <Grid
-                        data={this.state.listData}
-                        columnNum={3}
-                        activeStyle={false}
-                        square={false}
-                        hasLine={false}
-                        renderItem={(item, index) => {
-                            return (
-                                this.state.selectedIndex === index ?
-                                    <SelectedItem itemData={item}/>
-                                    :
-                                    <NormalItem itemData={item}/>
-                            );
-                        }}
-                        onClick={(item, index) => {
-                            this.oilItemClick(item, index)
-                        }}
-                    />
-                </div>
-                <div className='oilCard-line'/>
-                <div className='oilCard-padding oilCard-introduction'>
-                    <p className='introduction-title'>使用规则：</p>
-                    <dl className='text-box'>
-                        <dd className='flex'>
-                            <span>1、</span>
-                            <span>本电子油券仅限汽油品类并长期有效。</span>
-                        </dd>
-                        <dd className='flex'>
-                            <span>2、</span>
-                            <span>本电子油券是不记名券，不挂失，不退换，本服务不与延长壳牌活动叠加使用。</span>
-                        </dd>
-                        <dd className='flex'>
-                            <span>3、</span>
-                            <span>电子油券以一百元为单位，不找零不兑现。</span>
-                        </dd>
-                        <dd className='flex'>
-                            <span>4、</span>
-                            <span>加油券以电子油券的形式在优驾行公众号“客户中心—个人中心—我的加油券”中显示，使用时在陕西省境内延长壳牌加油站车队卡收银系统中输入电子码或扫二维码即可。</span>
-                        </dd>
-                        <dd className='flex'>
-                            <span>5、</span>
-                            <span>如有电子油券使用问题，请联系我们的官方免费客服热线400-8012122（工作日：09:00-18:00），我们会第一时间为您解决。</span>
-                        </dd>
-                    </dl>
+                <div className='oilCard-wrap'>
+                    <img className='oilCard-banner' src={oilCardBanner} alt=""/>
+                    <div className='observeCouponDiv'>
+                        <a className='oilCouponBtn' href="http://wechat.sxeccellentdriving.com/ccb/#/user/oilVouchers">
+                            <img src={oilCardBtn} alt=""/>
+                        </a>
+                    </div>
+                    <div className='chooseCouponTitle oilCard-padding'>
+                        请选择油券
+                    </div>
+                    <div className='oilCard-padding oicCardItemDiv'>
+                        <Grid
+                            data={this.state.listData}
+                            columnNum={3}
+                            activeStyle={false}
+                            square={false}
+                            hasLine={false}
+                            renderItem={(item, index) => {
+                                return (
+                                    this.state.selectedIndex === index ?
+                                        <SelectedItem itemData={item}/>
+                                        :
+                                        <NormalItem itemData={item}/>
+                                );
+                            }}
+                            onClick={(item, index) => {
+                                this.oilItemClick(item, index)
+                            }}
+                        />
+                    </div>
+                    <div className='oilCard-line'/>
+                    <div className='oilCard-padding oilCard-introduction'>
+                        <p className='introduction-title'>使用规则：</p>
+                        <dl className='text-box'>
+                            <dd className='flex'>
+                                <span>1、</span>
+                                <span>本电子油券仅限汽油品类并长期有效。</span>
+                            </dd>
+                            <dd className='flex'>
+                                <span>2、</span>
+                                <span>本电子油券是不记名券，不挂失，不退换，本服务不与延长壳牌活动叠加使用。</span>
+                            </dd>
+                            <dd className='flex'>
+                                <span>3、</span>
+                                <span>电子油券以一百元为单位，不找零不兑现。</span>
+                            </dd>
+                            <dd className='flex'>
+                                <span>4、</span>
+                                <span>加油券以电子油券的形式在优驾行公众号“客户中心—个人中心—我的加油券”中显示，使用时在陕西省境内延长壳牌加油站车队卡收银系统中输入电子码或扫二维码即可。</span>
+                            </dd>
+                            <dd className='flex'>
+                                <span>5、</span>
+                                <span>如有电子油券使用问题，请联系我们的官方免费客服热线400-8012122（工作日：09:00-18:00），我们会第一时间为您解决。</span>
+                            </dd>
+                        </dl>
+                    </div>
                 </div>
                 <img className='oicCard-buyBtn' src={BuyBtn} alt="" onClick={this.skipBuy}/>
 

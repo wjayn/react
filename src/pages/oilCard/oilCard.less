@@ -2,12 +2,18 @@
 
 .oilCard-root {
   position: relative;
-  .pxtorem(padding-bottom, 160);
+  display: flex;
+  flex: 1;
+  .pxtorem(padding-bottom, 120);
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: white;
-  overflow: auto;
+  overflow: hidden;
   box-sizing: border-box;
+}
+
+.oilCard-wrap {
+  overflow: auto;
 }
 
 .oilCard-banner {
@@ -25,8 +31,12 @@
 }
 
 .oilCouponBtn {
+  display: inline-block;
   width: 50%;
   height: auto;
+  img {
+    width: 100%;
+  }
 }
 
 .chooseCouponTitle {
@@ -91,7 +101,7 @@
 .oilCard-introduction {
   color: @black5;
   .text-box {
-    dd{
+    dd {
       .pxtorem(margin-bottom, 8);
       .pxtorem(line-height, 44);
       text-align: justify;

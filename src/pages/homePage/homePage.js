@@ -8,32 +8,61 @@ import topBgImage from '../../assets/image/homePage-top.png';
 
 const apiUrl = {
     statusUrl: 'winstar-api/api/v1/orders/weekendBrand/judgeOpen',
-    bindPhoneUrl: 'winstar-api/api/v1/orders/weekendBrand/bindPhone',
-    judgeBindPhoneUrl: 'winstar-api/api/v1/orders/weekendBrand/judgeBindPhoneUrl'
+    bindPhoneUrl: '/ccb-api/api/v1/cbc/auth/updateMobile',
+    judgeBindPhoneUrl: '/ccb-api/api/v1/cbc/auth/isBindMobile'
 }
 
 class homePage extends Component {
     initData = () => {
         if (localStorage.getItem('tokenId')) {
             this.getActiveStatus();
-            // this.judgeBindPhone();
+            this.judgeBindPhone();
         } else {
             setTimeout(this.initData, 1000);
         }
     }
     // 判断当前openid是否绑定手机号
     judgeBindPhone = () => {
-        configuredAxios.doGet(apiUrl.judgeBindPhoneUrl, {openid: localStorage.getItem('openid')}, {
+        configuredAxios.doPost(apiUrl.judgeBindPhoneUrl, {}, false, {
             headers: {
                 "token_id": localStorage.getItem('tokenId')
             }
-        }).then(() => {
+        }).then((res) => {
+            // 0未绑定，1已绑定
+            console.log("返回结果")
+            console.log(res)
+            let isBindPhone = (res === 1) ? true : false;
             this.setState({
-                isBindPhone: true
+                isBindPhone
             })
         }).catch(() => {
         })
     }
+    // 立即参与 按钮点击
+    joinActivityClick = () => {
+        // 当前用户已经绑定过手机号，直接跳转订单页面，否则，弹出绑定手机号弹窗
+        if (this.state.isBindPhone) {
+            this.props.history.push('/oilCard');
+        } else {
+            this.setState({
+                isModal: true
+            })
+        }
+    }
+    // 绑定手机号码
+    bindPhoneApi = (params) => {
+        configuredAxios.doPost(apiUrl.bindPhoneUrl, {data: JSON.stringify(params)}, true,{
+            headers: {
+                "token_id": localStorage.getItem('tokenId')
+            }
+        }).then(() => {
+            // 跳转到订单页面
+            this.props.history.push('/oilCard');
+        }).catch(() => {
+        });
+
+    }
+
     // 获取当前活动状态
     getActiveStatus = () => {
         configuredAxios.doGet(apiUrl.statusUrl, {}, {
@@ -47,39 +76,22 @@ class homePage extends Component {
             })
         })
     }
-    joinActivityClick = () => {
-        // 当前用户已经绑定过手机号，直接跳转订单页面，否则，弹出绑定手机号弹窗
-        if(this.state.isBindPhone){
-            this.props.history.push('/oilCard');
-        }else{
-            this.setState({
-                isModal: true
-            })
-        }
-    }
-    // 关闭绑定按钮
-    onClose = () => {
-        this.setState({
-            isModal: false
-        })
-    }
-    // 绑定手机号码
-    bindPhoneApi = () => {
-        // configuredAxios.doPost('bindPhoneUrl', {data: {}}, true).then(() => {
-        // }).catch(() => {
-        // });
-        // 跳转到订单页面
-        this.props.history.push('/oilCard');
-    }
 
     constructor(props) {
         super(props)
         this.state = {
             activityIsOpen: false, // 活动是否开启
             openDay: 0, // 距离活动的开始剩余天数
-            isModal: false ,// 是否显示绑定手机号弹窗
+            isModal: true,// 是否显示绑定手机号弹窗
             isBindPhone: false // 当前openid是否绑定过手机号
         }
+    }
+
+    // 关闭绑定按钮
+    onClose = () => {
+        this.setState({
+            isModal: false
+        })
     }
 
     componentDidMount() {

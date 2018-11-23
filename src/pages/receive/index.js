@@ -26,9 +26,7 @@ class ReceiveIndex extends Component {
             "password": "",
             "visitType": 2
         }
-        console.log("提交数据");
-        console.log(data);
-        configAxios.doPost(apiUrl.receiveUrl, data, false,{
+        configAxios.doPost(apiUrl.receiveUrl, JSON.stringify(data), false, {
             headers: {
                 "token_id": localStorage.getItem('tokenId')
             }

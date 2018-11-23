@@ -33,6 +33,7 @@ class ConfiguredAxios{
     }
 
     getBaseUrl(){
+        console.log(process.env.NODE_ENV);
         if (process.env.NODE_ENV === "qa"){
             return "http://wechat.sxeccellentdriving.com";//测试包地址
         }else if(process.env.NODE_ENV === 'production'){

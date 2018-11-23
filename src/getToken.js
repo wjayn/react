@@ -27,8 +27,8 @@ function token() {
         "nickName": localStorage.getItem('nickname')
     };
     return configuredAxios.doPost('/ccb-api/api/v1/cbc/account/getToken', jsonData).then((res) => {
-        // localStorage.setItem('tokenId', res.tokenId);
-        localStorage.setItem('tokenId', 'faaf020ac173474d98445f2c9ef23715');
+        localStorage.setItem('tokenId', res.tokenId);
+        // localStorage.setItem('tokenId', 'faaf020ac173474d98445f2c9ef23715');
         return res.data;
     }).catch((error) => {
         console.log(error)

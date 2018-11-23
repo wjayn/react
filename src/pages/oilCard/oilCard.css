@@ -1,11 +1,16 @@
 .oilCard-root {
   position: relative;
-  padding-bottom: 5.71428571rem;
+  display: flex;
+  flex: 1;
+  padding-bottom: 4.28571429rem;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: white;
-  overflow: auto;
+  overflow: hidden;
   box-sizing: border-box;
+}
+.oilCard-wrap {
+  overflow: auto;
 }
 .oilCard-banner {
   width: 100%;
@@ -20,8 +25,12 @@
   padding-bottom: 1.42857143rem;
 }
 .oilCouponBtn {
+  display: inline-block;
   width: 50%;
   height: auto;
+}
+.oilCouponBtn img {
+  width: 100%;
 }
 .chooseCouponTitle {
   color: rgba(0, 0, 0, 0.5);
