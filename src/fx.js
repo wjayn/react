@@ -1,54 +1,32 @@
 /**
  * Created by Administrator on 2018/9/11.
  */
-import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile';
 import configuredAxios from './ConfiguredAxios'
 import '../../assets/image/shareIcon.png'
 
-const BASE_URL = 'http://wechat.sxeccellentdriving.com';
-const ONLINE_URL = 'https://mobile.sxwinstar.net';
-let link = '';
-// let betterCarLife = '/winstar-api/api/v1/wechatCommon/betterCarLife/noauth/getWechatShareData?url='
-let youjiaxing = '/wechat_access/api/v1/wechatCommon/noauth/getWechatShareData?url='
-
-const fxTitle = '优驾行“出行无忧，邀您相伴”'
-const fxImgUrl = `${BASE_URL}/ccb/fission/static/images/shareIcon.png`//线上图片地址:'https://mobile.sxwinstar.net/ccb/fission/static/images/shareIcon.png'
-const fxDesc = '送你一张最高30元加油优惠券，愿我们的友情稳步上涨！'
-const fxTimeLineTitle = '优驾行“出行无忧，邀您相伴”送加油优惠券！'
+let betterCarLife = '/winstar-api/api/v1/wechatCommon/betterCarLife/noauth/getWechatShareData?url='
+// let youjiaxing = '/wechat_access/api/v1/wechatCommon/noauth/getWechatShareData?url='
 
 
-function toShareBack() {
-    //loading  show
-    Toast.loading('Loading...', 0, () => {
-        console.log('Load complete !!!');
-    });
-    indexApi.validateInvite()
+const fxObj = {
+    fxTitle: '优驾行“出行无忧，邀您相伴”',
+    fxLink: 'http://localhost:3000/#/receive/oerderid',
+    fxImgUrl: `http://wechat.sxeccellentdriving.com/ccb/fission/static/images/shareIcon.png`, // 线下
+    // fxImgUrl: `https://mobile.sxwinstar.net/ccb/fission/static/images/shareIcon.png`, // 线上
+    fxDesc: '送你一张最高30元加油优惠券，愿我们的友情稳步上涨！',
+    fxTimeLineTitle: '优驾行“出行无忧，邀您相伴”送加油优惠券！'
+}
 
-
-        .then((bindPhoneData) => {
-            Toast.hide();
-            alert(bindPhoneData.ac_state)
-            if (bindPhoneData.ac_state === '0') {
-                alert('in 0')
-                let inviteUserId = localStorage.getItem('token_id')
-                let inviteName = localStorage.getItem('nickname')
-                link = `${BASE_URL}/ccb/fission/?inviteUserId=${inviteUserId}&inviteName=${inviteName}#/pages/invitee/inviteeIndex/inviteeIndex`
-                link = encodeURI(link)
-            } else if (bindPhoneData.ac_state === '1') {
-                alert('in 1')
-                link = `${BASE_URL}/ccb/fission/#/pages/index/ineligible/ineligible`
-            } else {
-                alert('in 2')
-            }
-            configShare()
-        })
+function judgeShareCondition(){
+    if(localStorage.getItem('orderId')){
+        configShare();
+    }
 }
 
 function configShare() {
-    let url = window.location.href.split('#')[0]
-    return configuredAxios.doGet({
-        'url': `${BASE_URL}${youjiaxing}${url}`,
-        'method': 'POST'
+    let url = window.location.href.split('/#')[0];
+    return configuredAxios.doPost({
+        'url': `${betterCarLife}${url}`
     }).then((data) => {
             window.wx.config({
                 debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -113,9 +91,9 @@ function configShare() {
 
 
                 window.wx.onMenuShareTimeline({
-                    title: fxTimeLineTitle,
-                    link: link,
-                    imgUrl: fxImgUrl,
+                    title: fxObj.fxTimeLineTitle,
+                    link: fxObj.fxLink,
+                    imgUrl: fxObj.fxImgUrl,
                     trigger: function () {
                         //alert('用户点击分享到朋友圈');
                     },
@@ -136,10 +114,10 @@ function configShare() {
                 // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
 
                 window.wx.onMenuShareAppMessage({
-                    title: fxTitle,
-                    desc: fxDesc,
-                    link: link,
-                    imgUrl: fxImgUrl,
+                    title: fxObj.fxTitle,
+                    desc: fxObj.fxDesc,
+                    link: fxObj.fxLink,
+                    imgUrl: fxObj.fxImgUrl,
 
                     trigger: function () {
                         //alert('用户点击发送给朋友');
@@ -163,10 +141,10 @@ function configShare() {
                 // 2.3 监听“分享到QQ”按钮点击、自定义分享内容及分享结果接口
 
                 window.wx.onMenuShareQQ({
-                    title: fxTitle,
-                    desc: fxDesc,
-                    link: link,
-                    imgUrl: fxImgUrl,
+                    title: fxObj.fxTitle,
+                    desc: fxObj.fxDesc,
+                    link: fxObj.fxLink,
+                    imgUrl: fxObj.fxImgUrl,
                     trigger: function () {
                         //alert('用户点击分享到QQ');
                     },
@@ -188,10 +166,10 @@ function configShare() {
 
                 // 2.4 监听“分享到微博”按钮点击、自定义分享内容及分享结果接口
                 window.wx.onMenuShareWeibo({
-                    title: fxTitle,
-                    desc: fxDesc,
-                    link: link,
-                    imgUrl: fxImgUrl,
+                    title: fxObj.fxTitle,
+                    desc: fxObj.fxDesc,
+                    link: fxObj.fxLink,
+                    imgUrl: fxObj.fxImgUrl,
                     trigger: function () {
                         //alert('用户点击分享到微博')
                     },
@@ -213,11 +191,11 @@ function configShare() {
 
                 window.wx.updateAppMessageShareData({
 
-                    title: fxTitle, // 分享标题
-                    link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                    imgUrl: fxImgUrl, // 分享图标
-                    desc: fxDesc,
-                    function(res){
+                    title: fxObj.fxTitle, // 分享标题
+                    link: fxObj.fxLink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: fxObj.fxImgUrl, // 分享图标
+                    desc: fxObj.fxDesc,
+                    function (res) {
                         alert(res)
                     }
 
@@ -226,11 +204,11 @@ function configShare() {
 
                 window.wx.updateTimelineShareData({
 
-                    title: fxTimeLineTitle, // 分享标题
-                    link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                    imgUrl: fxImgUrl, // 分享图标
+                    title: fxObj.fxTimeLineTitle, // 分享标题
+                    link: fxObj.fxLink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: fxObj.fxImgUrl, // 分享图标
 
-                    function(res){
+                    function (res) {
                         alert(res)
                     }
 
@@ -247,5 +225,5 @@ function configShare() {
 }
 
 export default {
-    toShareBack: toShareBack
+    judgeShareCondition: judgeShareCondition
 }

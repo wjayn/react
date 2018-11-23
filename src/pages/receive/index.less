@@ -1,3 +1,68 @@
-.index {
+@import '../../public';
 
+.receive {
+  height: 100vh;
+  background: @orange;
+  overflow: auto;
+  .flex {
+    display: flex;
+  }
+  .top {
+    width: 100%;
+  }
+  .info-wrap {
+    .pxtorem(padding-right, 44);
+    .pxtorem(padding-left, 44);
+    .pxtorem(padding-bottom, 44);
+    & > .box {
+      background: @white;
+      border-radius: 4px;
+      overflow: hidden;
+      .title {
+        color: @orange;
+      }
+      .text-box {
+        width: 85%;
+        margin: 0 auto;
+        .pxtorem(padding-bottom, 30);
+        text-align: justify;
+        dt {
+          color: @gray;
+          .pxtorem(margin-bottom, 30);
+          p {
+            position: relative;
+            display: inline-block;
+            .pxtorem(padding-left, 55);
+            .pxtorem(padding-right, 55);
+            b {
+              position: relative;
+              background: @white;
+              .pxtorem(padding-left, 10);
+              .pxtorem(padding-right, 10);
+              z-index: 2
+            }
+            &::after {
+              content: '';
+              position: absolute;
+              display: block;
+              left: 0;
+              top: 50%;
+              .pxtorem(height, 2);
+              width: 100%;
+              background: @gray
+            }
+          }
+        }
+        dd {
+          margin-left: 0;
+          .pxtorem(line-height, 40);
+          .pxtorem(margin-bottom, 10);
+          color: @black7
+        }
+      }
+    }
+  }
+  .bind-phone .form-wrap .box{
+    width: 85%;
+  }
 }

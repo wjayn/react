@@ -1,10 +1,11 @@
 .oilCard-root {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  position: relative;
+  padding-bottom: 5.71428571rem;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   background-color: white;
+  overflow: auto;
+  box-sizing: border-box;
 }
 .oilCard-banner {
   width: 100%;
@@ -35,32 +36,35 @@
   border-color: gray;
 }
 .oilCard-oilItem {
+  position: relative;
   border-radius: 0.35714286rem;
   border-width: 0.07142857rem;
   margin-left: 0.35714286rem;
   margin-right: 0.35714286rem;
   height: 1.78571429rem;
-  height: 3.57142857rem;
+  height: 4.14285714rem;
   border-style: solid;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 .oilCard-originalPrice {
-  font-size: 1.42857143rem;
+  margin-bottom: 0.21428571rem;
+  font-size: 1.28571429rem;
   font-weight: bold;
 }
 .oicCard-salePrice {
-  font-size: 0.57142857rem;
+  font-size: 0.85714286rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 .discountImage {
-  width: 0.71428571rem;
-  display: flex;
-  margin-top: 0;
-  margin-right: 0;
+  position: absolute;
+  display: block;
+  top: 0;
+  right: -1px;
+  width: 2.14285714rem;
 }
 .oilCard-line {
   height: 0.07142857rem;
@@ -69,9 +73,16 @@
 .oilCard-introduction {
   color: rgba(0, 0, 0, 0.5);
 }
+.oilCard-introduction .text-box dd {
+  margin-bottom: 0.28571429rem;
+  line-height: 1.57142857rem;
+  text-align: justify;
+}
 .introduction-title {
+  margin-top: 1rem;
+  margin-bottom: 0.71428571rem;
   font-weight: bold;
-  font-size: 1.07142857rem;
+  font-size: 1.14285714rem;
   color: rgba(0, 0, 0, 0.7);
 }
 .oicCard-buyBtn {
@@ -82,7 +93,7 @@
   width: 100%;
 }
 .oilCard-padding {
-  width: 90%;
+  width: 90.4%;
   margin-left: auto;
   margin-right: auto;
 }

@@ -4,7 +4,7 @@ import configuredAxios from '../../ConfiguredAxios';
 
 import 'antd-mobile/dist/antd-mobile.css';
 import './bindPhone.less';
-import {receiveInvite, activeStatusUrl, verifyImgCodeUrl, verifyUrl, verifyImgUrl} from "./apiUrl";
+import {verifyImgCodeUrl, verifyUrl, verifyImgUrl} from "./apiUrl";
 
 class BindPhone extends Component {
     // 手机号码文本框失去焦点
@@ -77,7 +77,7 @@ class BindPhone extends Component {
         configuredAxios.doPost(verifyUrl, data, true).then((res) => {
             Toast.hide();
             this.startCountDown();
-            // 领取礼包按钮可点击
+            // 提交按钮可点击
             this.setState({
                 canSubmit: true,
                 msgVerifyId: res.text
@@ -106,29 +106,21 @@ class BindPhone extends Component {
     }
     // 领取礼包
     formSubmit = () => {
-        let params = {
-            mobile: this.state.phone,
-            msgVerifyCode: this.state.msgCode,
-            msgVerifyId: this.state.msgVerifyId
+        const phone = this.state.phone;
+
+        if (!phoneVerify(phone)) Toast.fail('请输入正确的手机号码！', 2);
+
+        const imgCode = this.state.imgCode;
+        const msgCode = this.state.msgCode;
+
+        if (phoneVerify(phone) && picTextVerify(imgCode) && msgVierfy(msgCode)) {
+            let params = {
+                mobile: this.state.phone,
+                msgVerifyCode: this.state.msgCode,
+                msgVerifyId: this.state.msgVerifyId
+            }
+            this.props.onBtnClick(params);
         }
-        this.props.onBtnClick({a: 1, b: 2});
-        // const phone = this.state.phone;
-        // if (!phoneVerify(phone)) Toast.fail('请输入正确的手机号码！', 2);
-        //
-        // const imgCode = this.state.imgCode;
-        // const msgCode = this.state.msgCode;
-        //
-        // if (phoneVerify(phone) && picTextVerify(imgCode) && msgVierfy(msgCode)) {
-        //     // 1、查询活动是否结束；
-        //     Toast.loading("请稍后...", 0);
-        //     this.props.onBtnClick({a:1,b:2});
-        //     // this.activeStatus({
-        //     //     success: () => {
-        //     //         // 2、接受邀请
-        //     //         this.receiveInvite();
-        //     //     }
-        //     // });
-        // }
         return false;
     }
 
@@ -175,8 +167,7 @@ class BindPhone extends Component {
                             <Button disabled={!this.state.canClick} onClick={this.getVerify} className='btn' inline
                                     size='small'>{this.state.text}</Button>
                         </Flex>
-                        {/*<Button disabled={!this.state.canSubmit} className='btn' onClick={this.formSubmit}>立即领取</Button>*/}
-                        <Button disabled={false} className='btn' onClick={this.formSubmit}>立即领取</Button>
+                        <Button disabled={!this.state.canSubmit} className='btn' onClick={this.formSubmit}>{this.props.btnText}</Button>
                     </div>
                 </div>
             </div>

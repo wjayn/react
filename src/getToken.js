@@ -6,9 +6,10 @@ import configuredAxios from './ConfiguredAxios'
 //获取Token
 function token() {
     if (!localStorage.getItem('openid')) {
-        // const openid = '123123213';
+        localStorage.setItem('openid', 'faaf020ac173474d98445f2c9ef23715');
+        window.location.reload();
         // 线下
-        window.location.href = `http://wechat.sxeccellentdriving.com?type=callback&menu=weekendBrand`;
+        // window.location.href = `http://wechat.sxeccellentdriving.com?type=callback&menu=weekendBrand`;
         // 线上
         // window.location.href = `https://mobile.sxwinstar.net?type=callback&menu=123`;
         return
@@ -21,17 +22,14 @@ function token() {
     }
 
     let jsonData = {
-        'openid': localStorage.getItem('openid'),
-        'headImgUrl': localStorage.getItem('headimgurl'),
-        'nickName': localStorage.getItem('nickname')
+        "openid": localStorage.getItem('openid'),
+        "headImgUrl": localStorage.getItem('headimgurl'),
+        "nickName": localStorage.getItem('nickname')
     };
-    return configuredAxios.doPost('/ccb-api/api/v1/cbc/account/getToken', JSON.stringify(jsonData)).then((res) => {
-        console.log(res.data);
-        if (res.statusCode === 200) {
-            return res.data;
-        } else {
-            alert(res)
-        }
+    return configuredAxios.doPost('/ccb-api/api/v1/cbc/account/getToken', jsonData).then((res) => {
+        // localStorage.setItem('tokenId', res.tokenId);
+        localStorage.setItem('tokenId', 'faaf020ac173474d98445f2c9ef23715');
+        return res.data;
     }).catch((error) => {
         console.log(error)
     })

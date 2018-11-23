@@ -1,17 +1,17 @@
 @import "../../public";
 
 .homePage-root {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: @orange;
+  overflow: auto;
 }
+
 .homePage-topImage {
   width: 100%;
   height: auto;
 }
+
 .activityBgDiv {
   display: flex;
   flex-direction: column;
@@ -19,10 +19,12 @@
   align-items: center;
   align-content: center;
 }
+
 .homePage-openDay {
   .pxtorem(font-size, 36);
   color: @yellow;
 }
+
 .homePage-activityBtn {
   background-color: white;
   .pxtorem(font-size, 40);
@@ -36,10 +38,12 @@
 .openBtn {
   color: @orange;
 }
+
 .notOpenBtn {
   .pxtorem(margin-top, 40);
   color: @black5;
 }
+
 .homePage-padding {
   width: 85%;
   margin-left: auto;
@@ -51,30 +55,76 @@
   .pxtorem(height, 1);
   .pxtorem(margin-top, 60);
 }
+
 .introduceTitle {
   display: flex;
   justify-content: center;
   .pxtorem(margin-top, 40);
+  .pxtorem(margin-bottom, 20);
+  .pxtorem(font-size, 28);
   align-items: center;
 }
+
 .introduceText {
   .pxtorem(font-size, 26);
   color: white;
   font-weight: bold;
 }
+
 .introduce-line {
   background-color: white;
   .pxtorem(height, 2);
   .pxtorem(width, 60);
 }
+
 .leftLine {
-  .pxtorem(margin-right,10)
+  .pxtorem(margin-right, 10)
 }
+
 .rightLine {
-  .pxtorem(margin-left,10)
+  .pxtorem(margin-left, 10)
 }
+
 .introduce-contenDiv {
-  .pxtorem(margin-top, 0);
-  color: @white-8;
-  .pxtorem(font-size, 28);
+  .pxtorem(padding-bottom, 78);
+  dd {
+    .pxtorem(margin-bottom, 10);
+    .pxtorem(line-height, 48);
+    color: @white-8;
+    text-align: justify;
+  }
+}
+
+.homePage-modal {
+  .am-modal-content {
+    overflow: visible;
+  }
+}
+
+.close-modal {
+  position: absolute;
+  left: 50%;
+  .pxtorem(bottom, -100);
+  .pxtorem(width, 58);
+  .pxtorem(height, 58);
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, .7);
+  .pxtorem(border-radius, 58);
+  &::after, &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    .pxtorem(width, 2);
+    .pxtorem(height, 40);
+    background-color: rgba(0, 0, 0, 0.6);
+    transform-origin: top;
+  }
+  &::after {
+    transform: rotate(45deg) translateY(-50%);
+  }
+  &::before {
+    transform: rotate(-45deg) translateY(-50%);
+  }
 }

@@ -45,26 +45,33 @@ class ConfiguredAxios{
         );
     }
 
-    doGet(url,params){
-        if (params){
-            return this.axiosInstance.get(url,{...this.defaultGetConfig,params:params}).then(this.responseProcess).catch(this.defaultErrorProcess);
-        }else {
-            return this.axiosInstance.get(url,{...this.defaultGetConfig}).then(this.responseProcess).catch(this.defaultErrorProcess);;
-        }
+    doGet(url,params, config={}){
+        return this.axiosInstance.get(url, {...this.defaultGetConfig, ...config, params: params}).then(this.responseProcess).catch(this.defaultErrorProcess);
+
     }
     //获取图片
     doGetImage(url){
-        return this.axiosInstance.get(url,{...this.defaultGetImgConfig}).then(this.responseProcess).catch(this.defaultErrorProcess);;
+        return this.axiosInstance.get(url,{...this.defaultGetImgConfig}).then(this.responseProcess).catch(this.defaultErrorProcess);
     }
 
-    doPost(path,params,isFromData){
-        let  config;
+    doPost(path,params,isFromData, extraConfig={}){
+        let config;
+        let extraHeaders = this.remove(extraConfig, 'headers');
         if (isFromData){
-            config = {...this.defaultPostConfig,headers:{'Content-Type':'application/x-www-form-urlencoded'}}
+            config = {...this.defaultPostConfig,headers:{'Content-Type':'application/x-www-form-urlencoded', ...extraHeaders}}
         }else{
-            config = {...this.defaultPostConfig,headers:{'Content-Type':'application/json'}}
+            config = {...this.defaultPostConfig,headers:{'Content-Type':'application/json', ...extraHeaders}}
         }
-        return this.axiosInstance.post(path,params,config).then(this.responseProcess).catch(this.defaultErrorProcess);
+
+        return this.axiosInstance.post(path,params,{...config, ...extraConfig}).then(this.responseProcess).catch(this.defaultErrorProcess);
+    }
+
+    remove(obj, key){
+        let value = obj[key];
+        if (value){
+            delete obj[key];
+        }
+        return value
     }
 
     responseProcess = (response)=>{

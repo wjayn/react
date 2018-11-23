@@ -15,12 +15,13 @@
   box-sizing: border-box;
 }
 .bind-phone .form-wrap .box {
-  width: 85%;
+  width: 92%;
   margin: 0 auto;
 }
 .bind-phone .form-wrap .box .caption {
   margin-bottom: 1.42857143rem;
-  font-size: 1.21428571rem;
+  font-size: 1.28571429rem;
+  text-align: left;
   color: #E25B28;
 }
 .bind-phone .form-wrap .box .input {

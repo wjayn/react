@@ -1,0 +1,66 @@
+.receive {
+  height: 100vh;
+  background: #E25B28;
+  overflow: auto;
+}
+.receive .flex {
+  display: flex;
+}
+.receive .top {
+  width: 100%;
+}
+.receive .info-wrap {
+  padding-right: 1.57142857rem;
+  padding-left: 1.57142857rem;
+  padding-bottom: 1.57142857rem;
+}
+.receive .info-wrap > .box {
+  background: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.receive .info-wrap > .box .title {
+  color: #E25B28;
+}
+.receive .info-wrap > .box .text-box {
+  width: 85%;
+  margin: 0 auto;
+  padding-bottom: 1.07142857rem;
+  text-align: justify;
+}
+.receive .info-wrap > .box .text-box dt {
+  color: #5f5d5d;
+  margin-bottom: 1.07142857rem;
+}
+.receive .info-wrap > .box .text-box dt p {
+  position: relative;
+  display: inline-block;
+  padding-left: 1.96428571rem;
+  padding-right: 1.96428571rem;
+}
+.receive .info-wrap > .box .text-box dt p b {
+  position: relative;
+  background: #ffffff;
+  padding-left: 0.35714286rem;
+  padding-right: 0.35714286rem;
+  z-index: 2;
+}
+.receive .info-wrap > .box .text-box dt p::after {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 50%;
+  height: 0.07142857rem;
+  width: 100%;
+  background: #5f5d5d;
+}
+.receive .info-wrap > .box .text-box dd {
+  margin-left: 0;
+  line-height: 1.42857143rem;
+  margin-bottom: 0.35714286rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+.receive .bind-phone .form-wrap .box {
+  width: 85%;
+}

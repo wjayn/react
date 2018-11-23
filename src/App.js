@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Route, Redirect} from 'react-router-dom'
+import {HashRouter as Router, Route} from 'react-router-dom'
+import HomePage from './pages/homePage/homePage';
+import OilCard from './pages/oilCard/oilCard';
 import Receive from './pages/receive/index';
-import HomePage from './pages/homePage/homePage'
-import OilCard from './pages/oilCard/oilCard'
+import Already from './pages/receive/already';
+import No from './pages/receive/no';
 import getToken from './getToken';
 
 // import fx from './fx';
@@ -11,29 +13,18 @@ import getToken from './getToken';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            status: false
-        }
     }
 
     initData = () => {
-        if (localStorage.getItem('token_id')) {
-            // fx.toShareBack();
-        } else {
-            // this.token();
+        if (!localStorage.getItem('tokenId')) {
+            this.token();
         }
     }
+
     //获取token
     token = () => {
-            getToken.token()
-                .then((tokenData) => {
-                    localStorage.setItem('token_id', tokenData.tokenId);
-                    if (tokenData) {
-                        //分享
-                        // fx.toShareBack();
-                    }
-                })
-
+        getToken.token().then((tokenData) => {
+        })
     };
 
     componentDidMount() {
@@ -44,10 +35,11 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
-                    <Route path="/receive" component={Receive}/>
                     <Route path="/homePage" component={HomePage}/>
                     <Route path="/oilCard" component={OilCard}/>
-                    {this.state.status && <Redirect to={`/invited/end`}/>}
+                    <Route path="/receive/:orderId" component={Receive}/>
+                    <Route path="/already" component={Already}/>
+                    <Route path="/no" component={No}/>
                 </div>
             </Router>
         );
