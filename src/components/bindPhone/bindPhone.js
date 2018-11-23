@@ -117,7 +117,7 @@ class BindPhone extends Component {
             let params = {
                 mobile: this.state.phone,
                 msgVerifyCode: this.state.msgCode,
-                msgVerifyId: this.state.msgVerifyId
+                msgVerifyId: this.state.msgVerifyId,
             }
             this.props.onBtnClick(params);
         }
