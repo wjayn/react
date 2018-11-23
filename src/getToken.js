@@ -4,12 +4,10 @@
 import configuredAxios from './ConfiguredAxios'
 
 //获取Token
-function token() {
+function token(menu) {
     if (!localStorage.getItem('openid')) {
-        localStorage.setItem('openid', 'faaf020ac173474d98445f2c9ef23715');
-        window.location.reload();
-        // 线下
-        // window.location.href = `http://wechat.sxeccellentdriving.com?type=callback&menu=weekendBrand`;
+        // 线下 todo 配置PHP菜单
+        window.location.href = `http://wechat.sxeccellentdriving.com?type=callback&menu=${menu}`;
         // 线上
         // window.location.href = `https://mobile.sxwinstar.net?type=callback&menu=123`;
         return
@@ -27,15 +25,35 @@ function token() {
         "nickName": localStorage.getItem('nickname')
     };
     return configuredAxios.doPost('/ccb-api/api/v1/cbc/account/getToken', jsonData).then((res) => {
-        localStorage.setItem('tokenId', res.tokenId);
-        // localStorage.setItem('tokenId', 'faaf020ac173474d98445f2c9ef23715');
+        localStorage.setItem('ccbToken', res.tokenId);
         return res.data;
     }).catch((error) => {
         console.log(error)
     })
 }
 
+function autoGetToken(menu){
+    let tokenId = localStorage.getItem('ccbToken');
+    if (!tokenId) {
+        token(menu);
+    }
+    return tokenId;
+}
+
+function relogin(){
+    localStorage.removeItem('ccbToken');
+    localStorage.removeItem('openid');
+    let locationHash = window.location.hash;
+    if (locationHash && (locationHash.indexOf('receive'))){
+        window.location.href = './#/receive'
+    }else{
+        window.location.href = './#/homePage'
+    }
+}
+
 
 export default {
-    token: token
+    token,
+    autoGetToken,
+    relogin
 }

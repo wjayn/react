@@ -46,6 +46,9 @@ class BindPhone extends Component {
     getVerifyImg = () => {
         Toast.loading('请稍后...', 0);
         configuredAxios.doGetImage(verifyImgUrl).then((res) => {
+            if(this.isUnmount){
+                return;
+            }
             let verifyImg = 'data:image/png;base64,' + btoa(
                 new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), '')
             );
@@ -142,7 +145,12 @@ class BindPhone extends Component {
     }
 
     componentDidMount() {
+        this.isUnmount = false;
         this.getVerifyImg();
+    }
+
+    componentWillUnmount(){
+        this.isUnmount = true;
     }
 
     render() {
@@ -167,7 +175,7 @@ class BindPhone extends Component {
                             <Button disabled={!this.state.canClick} onClick={this.getVerify} className='btn' inline
                                     size='small'>{this.state.text}</Button>
                         </Flex>
-                        <Button disabled={!this.state.canSubmit} className='btn' onClick={this.formSubmit}>{this.props.btnText}</Button>
+                        <Button disabled={false && !this.state.canSubmit} className='btn' onClick={this.formSubmit}>{this.props.btnText}</Button>
                     </div>
                 </div>
             </div>

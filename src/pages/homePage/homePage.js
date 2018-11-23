@@ -5,6 +5,7 @@ import configuredAxios from '../../ConfiguredAxios';
 
 import './homePage.less';
 import topBgImage from '../../assets/image/homePage-top.png';
+import getToken from '../../getToken'
 
 const apiUrl = {
     statusUrl: 'winstar-api/api/v1/orders/weekendBrand/judgeOpen',
@@ -14,18 +15,18 @@ const apiUrl = {
 
 class homePage extends Component {
     initData = () => {
-        if (localStorage.getItem('tokenId')) {
+        let token = getToken.autoGetToken('weekendBrand');
+
+        if (token) {
             this.getActiveStatus();
             this.judgeBindPhone();
-        } else {
-            setTimeout(this.initData, 1000);
         }
-    }
+    };
     // 判断当前openid是否绑定手机号
     judgeBindPhone = () => {
         configuredAxios.doPost(apiUrl.judgeBindPhoneUrl, {}, false, {
             headers: {
-                "token_id": localStorage.getItem('tokenId')
+                "token_id": localStorage.getItem('ccbToken')
             }
         }).then((res) => {
             // 0未绑定，1已绑定
@@ -53,7 +54,7 @@ class homePage extends Component {
     bindPhoneApi = (params) => {
         configuredAxios.doPost(apiUrl.bindPhoneUrl, {data: JSON.stringify(params)}, true,{
             headers: {
-                "token_id": localStorage.getItem('tokenId')
+                "token_id": localStorage.getItem('ccbToken')
             }
         }).then(() => {
             // 跳转到订单页面
@@ -67,13 +68,15 @@ class homePage extends Component {
     getActiveStatus = () => {
         configuredAxios.doGet(apiUrl.statusUrl, {}, {
             headers: {
-                "token_id": localStorage.getItem('tokenId')
+                "token_id": localStorage.getItem('ccbToken')
             }
         }).then((res) => {
             this.setState({
                 openDay: res.differDay,
                 activityIsOpen: res.state
             })
+        }).catch(err => {
+            console.log(err)
         })
     }
 

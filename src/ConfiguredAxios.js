@@ -1,6 +1,7 @@
 import axios from 'axios'
 import qs from 'qs';
 import {Toast} from 'antd-mobile';
+import getToken from './getToken';
 
 class ConfiguredAxios{
 
@@ -76,6 +77,7 @@ class ConfiguredAxios{
     }
 
     responseProcess = (response)=>{
+        console.log(response);
         if (response.status === 200){
             return this.processOnYjxRule(response);
         }else {
@@ -94,6 +96,10 @@ class ConfiguredAxios{
     }
 
     defaultErrorProcess = (error)=>{
+        if(error.response.status === 401){
+            getToken.relogin();
+            throw new Error('登陆过期')
+        }
         let  message = error.message;
         if(message === 'Network Error'){
             message = '网络错误';

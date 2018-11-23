@@ -7,6 +7,7 @@ import oilCardBanner from '../../assets/image/oilCard-banner.png'
 import oilCardBtn from '../../assets/image/observeCouponBtn.png'
 import Discount from '../../assets/image/discountSelcted.png'
 import BuyBtn from '../../assets/image/oilCardBuyBtn.png'
+import getToken from '../../getToken'
 
 const apiUrl = {
     listUrl: 'ccb-api/api/v1/cbc/goods/query'
@@ -17,7 +18,7 @@ class oilCard extends Component {
     getList = () => {
         configAxios.doGet(apiUrl.listUrl, {activityId: 203}, {
             headers: {
-                // "token_id": localStorage.getItem('tokenId')
+                // "token_id": localStorage.getItem('ccbToken')
                 "token_id": "481ded766cfa4d4e81611ae07f72a75a"
             }
         }).then((res) => {
@@ -29,7 +30,7 @@ class oilCard extends Component {
         let href = "https://mobile.sxwinstar.net/ccb/web/#/activity/payment?salePrice=0.01&shopPrice=100&activityId=203&id=123&backActivityTwo=one";
 
         let cur = this.state.listData[this.state.selectedIndex];
-        // window.location.href = 'http://wechat.sxeccellentdriving.com/lyy/#/activity/payment?brandTokenId=' + localStorage.getItem("tokenId");
+        // window.location.href = 'http://wechat.sxeccellentdriving.com/lyy/#/activity/payment?brandTokenId=' + localStorage.getItem("ccbToken");
 
         console.log(cur);
     }
@@ -51,8 +52,8 @@ class oilCard extends Component {
     }
 
     componentDidMount() {
+        this.tokenId = getToken.autoGetToken('weekendBrand');
         this.getList();
-        console.log(window.location.href.split('/#')[0]);
     }
 
     render() {
@@ -74,7 +75,7 @@ class oilCard extends Component {
             )
         };
 
-        const tokenId = localStorage.getItem("tokenId");
+        const tokenId = localStorage.getItem("ccbToken");
 
         return (
             <div className='oilCard-root'>
