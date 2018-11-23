@@ -24,19 +24,17 @@ class homePage extends Component {
     };
     // 判断当前openid是否绑定手机号
     judgeBindPhone = () => {
-        configuredAxios.doPost(apiUrl.judgeBindPhoneUrl, {}, false, {
+        configuredAxios.doGet(apiUrl.judgeBindPhoneUrl,{},{
             headers: {
                 "token_id": localStorage.getItem('ccbToken')
             }
         }).then((res) => {
-            // 0未绑定，1已绑定
-            console.log("返回结果")
-            console.log(res)
-            let isBindPhone = (res === 1) ? true : false;
+            console.log("是否绑定手机号" + res.result)
+            let isBind = (res.result === 'YES') ? true : false
             this.setState({
-                isBindPhone
+                isBindPhone: isBind,
             })
-        }).catch(() => {
+        }).catch(() =>{
         })
     }
     // 立即参与 按钮点击
@@ -52,7 +50,7 @@ class homePage extends Component {
     }
     // 绑定手机号码
     bindPhoneApi = (params) => {
-        configuredAxios.doPost(apiUrl.bindPhoneUrl, {data: JSON.stringify(params)}, true,{
+        configuredAxios.doPost(apiUrl.bindPhoneUrl, params, false,{
             headers: {
                 "token_id": localStorage.getItem('ccbToken')
             }
@@ -75,9 +73,8 @@ class homePage extends Component {
                 openDay: res.differDay,
                 activityIsOpen: res.state
             })
-        }).catch(err => {
-            console.log(err)
-        })
+        }).catch(() => {
+        });
     }
 
     constructor(props) {
@@ -85,7 +82,7 @@ class homePage extends Component {
         this.state = {
             activityIsOpen: false, // 活动是否开启
             openDay: 0, // 距离活动的开始剩余天数
-            isModal: true,// 是否显示绑定手机号弹窗
+            isModal: false,// 是否显示绑定手机号弹窗
             isBindPhone: false // 当前openid是否绑定过手机号
         }
     }

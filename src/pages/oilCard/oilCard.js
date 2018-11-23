@@ -18,8 +18,7 @@ class oilCard extends Component {
     getList = () => {
         configAxios.doGet(apiUrl.listUrl, {activityId: 203}, {
             headers: {
-                // "token_id": localStorage.getItem('ccbToken')
-                "token_id": "481ded766cfa4d4e81611ae07f72a75a"
+                "token_id": localStorage.getItem('ccbToken')
             }
         }).then((res) => {
             this.setState({listData: res});
@@ -28,15 +27,10 @@ class oilCard extends Component {
     }
     skipBuy = () => {
         let href = "https://mobile.sxwinstar.net/ccb/web/#/activity/payment?salePrice=0.01&shopPrice=100&activityId=203&id=123&backActivityTwo=one";
-
         let cur = this.state.listData[this.state.selectedIndex];
-        // window.location.href = 'http://wechat.sxeccellentdriving.com/lyy/#/activity/payment?brandTokenId=' + localStorage.getItem("ccbToken");
+        window.location.href =  `https://mobile.sxwinstar.net/ccb/web/#/activity/payment?salePrice=${cur.saledPrice}&shopPrice=${cur.price}&activityId=${cur.type}&id=${cur.id}&backActivityTwo=one`
+    }
 
-        console.log(cur);
-    }
-    observeCouponClick = () => {
-        alert('查看我的加油券')
-    }
     oilItemClick = (item, index) => {
         this.setState({
             selectedIndex: index,
@@ -54,6 +48,7 @@ class oilCard extends Component {
     componentDidMount() {
         this.tokenId = getToken.autoGetToken('weekendBrand');
         this.getList();
+        console.log(window.location.href.split('/#')[0]);
     }
 
     render() {
