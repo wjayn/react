@@ -25,6 +25,8 @@ class BindPhone extends Component {
     }
     // 倒计时
     startCountDown = () => {
+        if (this.isUnmount)
+            return;
         if (this.state.count > 0) {
             this.setState({
                 text: this.state.count + 's后重新获取',
@@ -78,6 +80,8 @@ class BindPhone extends Component {
             "appSecret": "1"
         }
         configuredAxios.doPost(verifyUrl, data, true).then((res) => {
+            if(this.isUnmount)
+                return;
             Toast.hide();
             this.startCountDown();
             // 提交按钮可点击

@@ -7,11 +7,12 @@ import configuredAxios from './ConfiguredAxios'
 function token(menu) {
     if (!localStorage.getItem('openid')) {
         // 线下 todo 配置PHP菜单
-        window.location.href = `http://wechat.sxeccellentdriving.com?type=callback&menu=${menu}`;
+        // window.location.href = `http://wechat.sxeccellentdriving.com/php-api/wechat_front/ccb/ccb-php/index.php?type=callback&menu=${menu}`;
         // 线上
-        // window.location.href = `https://mobile.sxwinstar.net?type=callback&menu=123`;
-        return
+        window.location.href = `https://mobile.sxwinstar.net/wechat/index.php?type=callback&menu=${menu}`;
+        return Promise.reject('openId获取失败')
     }
+
     if (!localStorage.getItem('headimgurl')) {
         localStorage.setItem('headimgurl', '优驾行无头像')
     }
@@ -27,26 +28,24 @@ function token(menu) {
     return configuredAxios.doPost('/ccb-api/api/v1/cbc/account/getToken', jsonData).then((res) => {
         localStorage.setItem('ccbToken', res.tokenId);
         return res.data;
-    }).catch((error) => {
-        console.log(error)
     })
 }
 
-function autoGetToken(menu){
+function autoGetToken(menu) {
     let tokenId = localStorage.getItem('ccbToken');
     if (!tokenId) {
-        token(menu);
+        return token(menu);
     }
-    return tokenId;
+    return Promise.resolve(tokenId);
 }
 
-function relogin(){
+function relogin() {
     localStorage.removeItem('ccbToken');
     localStorage.removeItem('openid');
     let locationHash = window.location.hash;
-    if (locationHash && (locationHash.indexOf('receive'))){
+    if (locationHash && (locationHash.indexOf('receive') >= 0)) {
         window.location.href = './#/receive'
-    }else{
+    } else {
         window.location.href = './#/homePage'
     }
 }

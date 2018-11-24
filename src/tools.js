@@ -79,6 +79,16 @@ class Tools{
         let hehe = hmacSHA256('你好','123');
         console.log(Base64.stringify(hehe))
     }
+
+    static getParams(searchUrl, key){
+        let reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+        let url = searchUrl.substr(1);
+        let match = url.match(reg);
+        if(match && match.length > 2){
+            return decodeURIComponent(match[2]);
+        }
+        return null;
+    }
 }
 
 export default Tools;

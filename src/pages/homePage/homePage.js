@@ -6,21 +6,22 @@ import configuredAxios from '../../ConfiguredAxios';
 import './homePage.less';
 import topBgImage from '../../assets/image/homePage-top.png';
 import getToken from '../../getToken'
+import fx from '../../fx';
 
 const apiUrl = {
-    statusUrl: 'winstar-api/api/v1/orders/weekendBrand/judgeOpen',
+    statusUrl: '/ccb-api/api/v1/cbc/weekendBrand/getWeekendBrandStatus',
     bindPhoneUrl: '/ccb-api/api/v1/cbc/auth/updateMobile',
     judgeBindPhoneUrl: '/ccb-api/api/v1/cbc/auth/isBindMobile'
 }
 
 class homePage extends Component {
     initData = () => {
-        let token = getToken.autoGetToken('weekendBrand');
-
-        if (token) {
+        getToken.autoGetToken('weekendBrand').then(res => {
             this.getActiveStatus();
             this.judgeBindPhone();
-        }
+        }).catch(err => {
+            console.log(err)
+        });
     };
     // 判断当前openid是否绑定手机号
     judgeBindPhone = () => {
@@ -34,7 +35,8 @@ class homePage extends Component {
             this.setState({
                 isBindPhone: isBind,
             })
-        }).catch(() =>{
+        }).catch((error) =>{
+            alert(error.message)
         })
     }
     // 立即参与 按钮点击
@@ -56,6 +58,9 @@ class homePage extends Component {
             }
         }).then(() => {
             // 跳转到订单页面
+            this.setState({
+                isModal:false
+            })
             this.props.history.push('/oilCard');
         }).catch(() => {
         });
@@ -96,6 +101,7 @@ class homePage extends Component {
 
     componentDidMount() {
         this.initData();
+        fx.judgeShareCondition(false);
     }
 
     render() {

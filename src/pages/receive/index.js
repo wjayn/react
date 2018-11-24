@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import configAxios from '../../ConfiguredAxios';
 import BindPhone from '../../components/bindPhone/bindPhone';
-
+import Tool from '../../tools'
 import top from '../../assets/image/receive-top.png';
 import './index.css';
 import getToken from '../../getToken'
+import fx from '../../fx'
 
 const apiUrl = {
-    receiveUrlApp: '/winstar-api/api/v1/orders/weekendBrand/noauth/weekendGiveCoupon',
+    receiveUrlApp: '/wechat_access/api/v1/orders/weekendBrand/noauth/weekendGiveCoupon',
     receiveUrl: '/ccb-api/api/v1/cbc/weekendBrand/receiveRedPackage'
 }
 
@@ -19,32 +20,29 @@ class ReceiveIndex extends Component {
 
     componentDidMount() {
         this.initParams();
+        fx.judgeShareCondition('receive');
     }
 
 
-    initParams(){
+    initParams() {
         let orderId = this.props.match.params.orderId;
-        let isApp = window.location.href.split("?")[1];
-
-        if (orderId && isApp === 'isApp=0'){// 微信
+        let isApp = Tool.getParams(this.props.location.search, 'isApp');
+        if (orderId && isApp === '0') {// 微信
             localStorage.setItem('orderId', orderId);
             localStorage.setItem('isApp', '0');
-            isApp = '0';
-        }else if (orderId){ // APP
+        } else if (orderId) { // APP
             localStorage.setItem('orderId', orderId);
             localStorage.setItem('isApp', '1');
             isApp = '1';
-        }else{ // PHP
+        } else { // PHP
             orderId = localStorage.getItem('orderId');
             isApp = localStorage.getItem('isApp');
         }
 
-
-        if(isApp === '0'){
-            let token = getToken.autoGetToken('weekendShare');
-            if(!token){
-                return;
-            }
+        if (isApp === '0') {
+            getToken.autoGetToken('weekendShare').then(res => {
+                console.log(res)
+            });
         }
 
         this.setState({
@@ -54,8 +52,8 @@ class ReceiveIndex extends Component {
     }
 
     // 立即领取
-    receiveApi(params){
-        let data = {}, url = '';
+    receiveApi(params) {
+        let data = {}, url = '', header = {};
         let {isApp, orderId} = this.state;
         if (isApp === '0') {
             data = {
@@ -65,6 +63,9 @@ class ReceiveIndex extends Component {
                 "orderId": orderId
             }
             url = apiUrl.receiveUrl;
+            header.headers = {
+                "token_id": localStorage.getItem('ccbToken')
+            }
         } else {
             data = {
                 "orderId": orderId,
@@ -79,19 +80,19 @@ class ReceiveIndex extends Component {
         }
 
         if (url) {
-            configAxios.doPost(url, data, false, {
-                headers: {
-                    "token_id": localStorage.getItem('ccbToken')
-                }
-            }).then((res) => {
+            configAxios.doPost(url, data, false, header).then((res) => {
                 console.log('领取成功');
                 console.log(res);
                 //  领取成功跳转already.js
-                this.props.history.push('/already');
+                this.props.history.push(`/already?received=${res.receiveStatus}`);
             }).catch((err) => {
                 //  没有优惠券跳转no.js
+                if (err.code === 'noRedPackageLeft.ordersRedPackageInfo.NotRule'){
+                    this.props.history.push('/no');
+                }
+
                 console.log(err);
-                this.props.history.push('/no');
+
             });
         }
     }
@@ -102,7 +103,8 @@ class ReceiveIndex extends Component {
                 <img src={top} alt="" className='top'/>
                 <div className='info-wrap'>
                     <div className='box'>
-                        <BindPhone caption='送您一张5元加油优惠券' borderClass='border-all' onBtnClick={this.receiveApi.bind(this)}
+                        <BindPhone caption='送您一张5元加油优惠券' borderClass='border-all'
+                                   onBtnClick={this.receiveApi.bind(this)}
                                    btnText='立即领取'></BindPhone>
                         <dl className='text-box'>
                             <dt className='ac'><p><b>优惠券使用规则</b></p></dt>

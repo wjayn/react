@@ -17,20 +17,13 @@ class ConfiguredAxios{
         method: 'get',
         responseType: "arraybuffer"
     }
-    constructor() {
-        this.axiosInstance = axios.create({
-            baseURL: this.getBaseUrl(),
-            timeout: 5000,
-        });
-        this.axiosInstance.interceptors.request.use((request) => {
-            if (request.data && request.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
-                request.data = qs.stringify(request.data);
-            }
-            if(request.data && request.headers['Content-Type'] === 'application/json'){
-                request.data = JSON.stringify(request.data);
-            }
-            return request;
-        });
+    responseProcess = (response)=>{
+        console.log(response);
+        if (response.status === 200){
+            return this.processOnYjxRule(response);
+        }else {
+            return Promise.reject({code: response.data.code, message: response.data.message})
+        }
     }
 
     getBaseUrl(){
@@ -75,18 +68,50 @@ class ConfiguredAxios{
         }
         return value
     }
-
-    responseProcess = (response)=>{
-        console.log(response);
-        if (response.status === 200){
-            return this.processOnYjxRule(response);
-        }else {
-            throw new Error('网络错误：'+response.status)
+    defaultErrorProcess = (error)=>{
+        console.log(error);
+        if(error.response){
+            if(error.response.status === 401){
+                getToken.relogin();
+                throw new Error('登陆过期')
+            }else if(error.response.status === 400){
+                let error_code = error.response.data.code;
+                let error_message = errorMessage[error_code] || '网络请求失败， 请稍后再试';
+                error = {code: error_code, message: error_message}
+            }
         }
+
+        let message = error.message;
+        if(message === 'Network Error'){
+            message = '网络错误';
+        }
+        Toast.hide();
+        Toast.fail(message, 2);
+        return Promise.reject(error)
     }
+
+    constructor() {
+        this.axiosInstance = axios.create({
+            baseURL: this.getBaseUrl(),
+            timeout: 50000,
+        });
+        this.axiosInstance.interceptors.request.use((request) => {
+            if (request.data && request.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
+                request.data = qs.stringify(request.data);
+            }
+            if(request.data && request.headers['Content-Type'] === 'application/json'){
+                request.data = JSON.stringify(request.data);
+            }
+            return request;
+        });
+    }
+
     processOnYjxRule(response){
         if(!response.data.code){
             return response.data;
+        }
+        if(!response.data){
+            return response;
         }
         if (response.data.code === 'success'){
             return response.data.data;
@@ -94,20 +119,13 @@ class ConfiguredAxios{
             throw new Error(response.data.message || response.message);
         }
     }
-
-    defaultErrorProcess = (error)=>{
-        if(error.response.status === 401){
-            getToken.relogin();
-            throw new Error('登陆过期')
-        }
-        let  message = error.message;
-        if(message === 'Network Error'){
-            message = '网络错误';
-        }
-        Toast.hide();
-        Toast.fail(message, 2);
-        throw new Error(error.message);
-    }
 }
+
+const errorMessage = {
+    'paramNotAllowNull.NotRule': '参数错误',
+    'verifyCodeIsError.NotRule': '验证码错误',
+    'noRedPackageLeft.ordersRedPackageInfo.NotRule': '红包已被领完',
+    'mobileHasBeenBind': '手机号已被绑定'
+};
 
 export default new ConfiguredAxios()

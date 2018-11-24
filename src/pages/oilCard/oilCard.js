@@ -9,11 +9,19 @@ import Discount from '../../assets/image/discountSelcted.png'
 import BuyBtn from '../../assets/image/oilCardBuyBtn.png'
 import getToken from '../../getToken'
 
+import fx from '../../fx';
+
 const apiUrl = {
     listUrl: 'ccb-api/api/v1/cbc/goods/query'
 }
 
 class oilCard extends Component {
+
+    skipBuy = () => {
+        let cur = this.state.listData[this.state.selectedIndex];
+        window.location.href =  `https://mobile.sxwinstar.net/ccb/web/#/activity/payment?salePrice=${cur.saledPrice}&shopPrice=${cur.price}&activityId=${cur.type}&id=${cur.id}&backActivityTwo=one&disCount=${cur.disCount}`
+    }
+
     // 获取商品列表
     getList = () => {
         configAxios.doGet(apiUrl.listUrl, {activityId: 203}, {
@@ -25,10 +33,9 @@ class oilCard extends Component {
         }).catch(() => {
         })
     }
-    skipBuy = () => {
-        let href = "https://mobile.sxwinstar.net/ccb/web/#/activity/payment?salePrice=0.01&shopPrice=100&activityId=203&id=123&backActivityTwo=one";
-        let cur = this.state.listData[this.state.selectedIndex];
-        window.location.href =  `https://mobile.sxwinstar.net/ccb/web/#/activity/payment?salePrice=${cur.saledPrice}&shopPrice=${cur.price}&activityId=${cur.type}&id=${cur.id}&backActivityTwo=one`
+
+    getDisplayPrice(itemData){
+        return itemData.disCount * itemData.price;
     }
 
     oilItemClick = (item, index) => {
@@ -46,9 +53,23 @@ class oilCard extends Component {
     }
 
     componentDidMount() {
-        this.tokenId = getToken.autoGetToken('weekendBrand');
         this.getList();
-        console.log(window.location.href.split('/#')[0]);
+        fx.judgeShareCondition(false);
+    }
+
+
+    getUrl(){
+        console.log(process.env.NODE_ENV);
+        if (process.env.NODE_ENV === "qa"){
+            return "http://wechat.sxeccellentdriving.com/ccb/#/user/oilVouchers";//测试包地址
+        }else if(process.env.NODE_ENV === 'production'){
+            return "https://mobile.sxwinstar.net/ccb/web/#/user/orderForm";//线上包地址
+        }else if(process.env.NODE_ENV === 'development'){
+            return "";//开发地址
+        }
+        throw new Error(
+            '未知环境错误'
+        );
     }
 
     render() {
@@ -57,7 +78,7 @@ class oilCard extends Component {
                 <div className='selectedItem oilCard-oilItem'>
                     <img className='discountImage' src={Discount} alt=""/>
                     <div className='oilCard-originalPrice'>{props.itemData.price}</div>
-                    <div className='oicCard-salePrice'>售价{props.itemData.saledPrice}元</div>
+                    <div className='oicCard-salePrice'>售价{this.getDisplayPrice(props.itemData)}元</div>
                 </div>
             )
         };
@@ -69,7 +90,6 @@ class oilCard extends Component {
                 </div>
             )
         };
-
         const tokenId = localStorage.getItem("ccbToken");
 
         return (
@@ -77,7 +97,7 @@ class oilCard extends Component {
                 <div className='oilCard-wrap'>
                     <img className='oilCard-banner' src={oilCardBanner} alt=""/>
                     <div className='observeCouponDiv'>
-                        <a className='oilCouponBtn' href="http://wechat.sxeccellentdriving.com/ccb/#/user/oilVouchers">
+                        <a className='oilCouponBtn' href={this.getUrl()}>
                             <img src={oilCardBtn} alt=""/>
                         </a>
                     </div>
