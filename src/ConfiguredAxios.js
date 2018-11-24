@@ -124,8 +124,12 @@ class ConfiguredAxios{
 const errorMessage = {
     'paramNotAllowNull.NotRule': '参数错误',
     'verifyCodeIsError.NotRule': '验证码错误',
+    'frequency.message.NotRule': '当前手机号短信验证次数过多，请稍后再试',
     'noRedPackageLeft.ordersRedPackageInfo.NotRule': '红包已被领完',
-    'mobileHasBeenBind': '手机号已被绑定'
+    'mobileHasBeenBind': '手机号已被绑定',
+    'code.is.error.NotRule':'验证码错误',
+    'phone.had.bind.NotRule':'手机号已被绑定',
+    'param.is.null.NotRule ':'手机号码不能为空',
 };
 
 export default new ConfiguredAxios()

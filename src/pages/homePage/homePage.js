@@ -7,6 +7,7 @@ import './homePage.less';
 import topBgImage from '../../assets/image/homePage-top.png';
 import getToken from '../../getToken'
 import fx from '../../fx';
+import {Toast} from "antd-mobile/lib/index";
 
 const apiUrl = {
     statusUrl: '/ccb-api/api/v1/cbc/weekendBrand/getWeekendBrandStatus',
@@ -36,7 +37,7 @@ class homePage extends Component {
                 isBindPhone: isBind,
             })
         }).catch((error) =>{
-            alert(error.message)
+            console.log(error.message)
         })
     }
     // 立即参与 按钮点击
@@ -62,7 +63,11 @@ class homePage extends Component {
                 isModal:false
             })
             this.props.history.push('/oilCard');
-        }).catch(() => {
+        }).catch((error) => {
+            if(error.code && error.message === '网络请求失败， 请稍后再试'){
+                Toast.hide();
+                Toast.fail('手机号与验证码不匹配', 2);
+            }
         });
 
     }

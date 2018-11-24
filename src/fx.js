@@ -10,10 +10,10 @@ import configuredAxios from './ConfiguredAxios'
 //let baseUrl = 'http://wechat.sxeccellentdriving.com/finance/sbd/';
 
 const fxObj = {
-    fxTitle: '优驾行品牌日，每周六9折购油！！！',
+    fxTitle: '恭喜您获得5元优惠券！优驾行周六品牌日9折购油，点击分享！！！',
     fxLink: `${baseUrl}#/receive/`,
     fxImgUrl: `${baseUrl}shareIco.png`,
-    fxDesc: '年底钱包回血指南，优驾行一招让您无惧油价上涨~',
+    fxDesc: '开车不玩手机，保持车距，警惕盲区，细节关乎生命，安全文明出行。',
     fxTimeLineTitle: '恭喜您获得5元优惠券！优驾行品牌日，每周六9折购油！！！'
 }
 
@@ -165,25 +165,25 @@ function configShare1(shareType) {
                 link: shareLink,
                 imgUrl: fxObj.fxImgUrl,
                 trigger: function (res) {
-                    alert('用户点击分享到微博');
+                    console.log('用户点击分享到微博');
                 },
                 complete: function (res) {
-                    alert(JSON.stringify(res));
+                    console.log(JSON.stringify(res));
                 },
                 success: function (res) {
-                    alert('已分享');
+                    console.log('已分享');
 
                 },
                 cancel: function (res) {
-                    alert('已取消');
+                    console.log('已取消');
                 },
                 fail: function (res) {
-                    alert(JSON.stringify(res));
+                    console.log(JSON.stringify(res));
                 }
             });
         });
         window.wx.error(function (res) {
-            alert(res)
+            console.log(res)
         });
 
 
